@@ -30,7 +30,6 @@ def create_app():
         return "<h1>Welcome to the 3200 boilerplate app</h1>"
 
     # Import the various routes
-    from src.views import views
     from src.administrators.administrators import administrators
     from src.buyers.buyers  import buyers
 
