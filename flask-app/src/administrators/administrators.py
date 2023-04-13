@@ -6,7 +6,7 @@ from src import db
 administrators = Blueprint('administrators', __name__)
 
 # Get all customers from the DB
-@customers.route('/customers', methods=['GET'])
+@administrators.route('/customers', methods=['GET'])
 def get_customers():
     cursor = db.get_db().cursor()
     cursor.execute('select company, last_name,\
@@ -35,3 +35,7 @@ def get_customer(userID):
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+
+
+    # yoloooo 
+    # plsss work
