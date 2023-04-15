@@ -50,13 +50,37 @@ buyers = Blueprint('buyers', __name__)
 # Listing Search Page
 # /users - GET
 # Get a list of all the user in the database to popular the user drop down
-
+@buyers.route('/users', methods=['GET'])
+def get_users():
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT * FROM Users')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    users = cursor.fetchall()
+    for row in users:
+         json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
 
 
 
 
 # /authors/{id} - GET
 # Returns details on the author and other book they wrote
+@buyers.route('/authors/{id}', methods=['GET'])
+def get_listing(authorid):
+    cursor = db.get_db().cursor()
+    cursor.execute("SELECT * FROM Authors join Textbooks on Authors.isbn=Textbooks.isbn \
+                   WHERE isbn = %s", (authorid,))
+    result = cursor.fetchone()
+    cursor.close()
+    db.get_db().close()
+    if result is not None:
+        return jsonify(result)
+    else:
+        return jsonify({"message": "Author not found"}), 404
 
 
 
