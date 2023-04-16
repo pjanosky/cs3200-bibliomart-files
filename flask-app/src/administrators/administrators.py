@@ -24,7 +24,7 @@ administrators = Blueprint('administrators', __name__)
 
 
 # Listing Edit Page
-# /textbooks - GET
+# /textbooks - GET      ---------- DONE -------------
 # Get a list of textbooks and their associated listings
 @administrators.route('/textbooks', methods=['GET'])
 def get_textbooks():
@@ -43,7 +43,7 @@ def get_textbooks():
 
 # /listings/get/{Title} - GET
 # Gets listing with given isbn
-@administrators.route('/listings/<ISBN>', methods=['GET'])
+@administrators.route('/listings/get/<ISBN>', methods=['GET'])
 def get_listing(ISBN):
     cursor = db.get_db().cursor()
     cursor.execute("SELECT * FROM Listings WHERE ISBN = %s", (ISBN,))

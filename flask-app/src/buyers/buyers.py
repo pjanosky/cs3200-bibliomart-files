@@ -132,7 +132,7 @@ def get_users():
 def get_author(id):
     try:
         query = """
-            SELECT *
+            SELECT AuthorID
             FROM Authors
             WHERE AuthorID=%s
         """
