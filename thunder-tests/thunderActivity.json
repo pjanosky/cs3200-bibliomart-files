@@ -302,5 +302,31 @@
         "value": "Success"
       }
     ]
+  },
+  {
+    "_id": "1f2f5767-f5fa-4251-a33b-9185bd2c8757",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/UserReviews/0Mg864B288/X8i",
+    "url": "localhost:8001/a/UserReviews/0Mg864B288/X8i",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-16T22:53:05.248Z",
+    "modified": "2023-04-16T22:54:24.033Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n\n  \"ReviewComment\": \"Nvevermind a book\",\n  \"ReviewDate\":\"2023-03-07 03:55:19\",\n  \"Rating\": 2\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
+      }
+    ]
   }
 ]

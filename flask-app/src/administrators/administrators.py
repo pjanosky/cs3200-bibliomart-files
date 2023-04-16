@@ -96,31 +96,6 @@ def create_listing():
     return jsonify({"message": "Listing created successfully"}), 201
 
 
-
-# /listings/{listingId} - PUT
-# Updates attributes of listing 
-@administrators.route('/Listings/<ListingId>')
-def update_listing(ListingID):
-    # access json data from requeted object
-    current_app.logger.info('Processing form data')
-    req_data = request.get_json()
-    current_app.logger.info(req_data)
-  
-    ListingId = req_data['ListingId']
-    Quantity = req_data['Quantity']
-    Price = req_data['Price']
-    EmployeeId = req_data['EmployeeId']
-    ShipperName = req_data['ShipperName']
-    ISBN = req_data ['ISBN']
-    
-
-    # construct the insert statement
-    insert_stmt = 'INSERT INTO Listings WHERE ListingId = ListingID (Quantity, Price, EmployeeId, ShipperName, ISBN) VALUES ("'
-    insert_stmt += ListingId + '","' + Quantity + '","' + Price + '","' + EmployeeId + '","' + ShipperName + '",' + ISBN + ')'
-
-    current_app.logger.info(insert_stmt)
-
-
 @administrators.route('/listings/<int:listingId>', methods=['PUT'])
 def edit_listing(listingId):
     if request.content_type != 'application/json':
@@ -155,51 +130,20 @@ def edit_listing(listingId):
 
 # /listings/{listingId} - DELETE
 # Removes a given listing
-@administrators.route('/Listings/<ListingId>')
+@administrators.route('/Listings/<ListingId>', methods=['DELETE'])
 def delete_listing(ListingId):
-     # access json data from requeted object
-    current_app.logger.info('Processing form data')
-    req_data = request.get_json()
-    current_app.logger.info(req_data)
+    cursor = db.get_db().cursor()
+    query = f"DELETE FROM Listings WHERE ListingId = '{ListingId}'"
+    current_app.logger.info(query)
+    cursor.execute(query)
 
-    ListingId = req_data['ListingID']
-    Quantity = req_data['Quantity']
-    Price = req_data['Price']
-    EmployeeId = req_data['EmployeeId']
-    ShipperName = req_data['ShipperName']
-    ISBN = req_data ['ISBN']
+    try: 
+        cursor.execute(query)
+        db.get_db().commit()
+    except IntegrityError as e:
+        return make_response(str(e), 400)
     
-
-    # construct the insert statement
-    insert_stmt = 'DELETE FROM Listings (ListingId, Quantity, Price, EmployeeId, ShipperName, ISBN) VALUES ("'
-    insert_stmt += ListingId + '","' + Quantity + '","' + Price + '","' + EmployeeId + '","' + ShipperName + '",' + ISBN + ')'
-
-    current_app.logger.info(insert_stmt)
-
-    #execute the querey
-    cursor = db.get_db().cursor()
-    cursor.execute(insert_stmt)
-    db.get_db().commit()
-
     return "Success"
-
-
-
-@administrators.route('/listings/delete/<listingId>', methods=['DELETE'])
-def delete_listing(listingId):
-    cursor = db.get_db().cursor()
-    cursor.execute("DELETE FROM Listings WHERE ListingId = %s", (listingId,))
-    rows_deleted = cursor.rowcount
-
-    db.get_db().commit()
-    cursor.close()
-    db.get_db().close()
-
-    if rows_deleted == 0:
-        return jsonify({"message": f"Failed to delete listing {listingId}"})
-    else:
-        return jsonify({"message": f"Listing {listingId} deleted successfully"})
-
 
 
 # Reviews Edit Page
@@ -293,25 +237,23 @@ def post_UserReviews(UserId):
 def update_UserReviews(UserId, ReviewId):
     
     req_data = request.json
-    UserId = req_data['UserId']
-    ReviewId = req_data['ReviewId']
-    comment = req_data['Comment']
+    ReviewComment = req_data['ReviewComment']
     ReviewDate = req_data['ReviewDate']
     Rating = req_data['Rating']
-
+    
     cursor = db.get_db().cursor()
-    query = f"INSERT INTO UserReviews (UserId, ReviewId, ReviewComment, ReviewDate, Rating) VALUES (UserId, ReviewId, '{comment}', '{ReviewDate}', {Rating})"
+    query = f"UPDATE UserReviews SET ReviewComment = '{ReviewComment}', ReviewDate = '{ReviewDate}', Rating = '{Rating}' WHERE UserId = '{UserId}' AND  ReviewId = '{ReviewId}' "
+    # Comment = %s, ReviewDate = %s, Rating = %s, WHERE UserId = %s AND ReviewId = %s", (Comment, ReviewDate, Rating, UserId, ReviewId)
     current_app.logger.info(query)
-
+    
     try: 
         cursor.execute(query)
         db.get_db().commit()
     except IntegrityError as e:
         return make_response(str(e), 400)
-    
+
     return "Success"
-
-
+ 
 
 
 # /users - GET
