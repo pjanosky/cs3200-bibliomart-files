@@ -277,3 +277,23 @@ def update_UserReviews(UserId, ReviewId):
 
 
 
+# /employees - GET
+# get all of the employees in the database
+@administrators.route('/employees', methods=['GET'])
+def get_employees():
+    query = f'''SELECT EmployeeId, FirstName, LastName FROM Employees;'''
+
+    current_app.logger.info(query)
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    
+    row_headers = [x[0] for x in cursor.description]
+    the_data = cursor.fetchall()
+    json_data = []
+    for row in the_data:
+        json_data.append(dict(zip(row_headers, row)))
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response

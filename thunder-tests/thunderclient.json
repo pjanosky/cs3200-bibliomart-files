@@ -1309,5 +1309,50 @@
         "value": "200"
       }
     ]
+  },
+  {
+    "_id": "2190fdef-9b4a-4c4b-9bc8-37fd1bf39e27",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/employees - GET valid",
+    "url": "localhost:8001/a/employees",
+    "method": "GET",
+    "sortNum": 220000,
+    "created": "2023-04-16T22:52:02.581Z",
+    "modified": "2023-04-16T22:52:02.581Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"EmployeeId\": \"06S884Ech3\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"FirstName\": \"Etti\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"LastName\": \"Beardmore\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"EmployeeId\": \"0Eo21P4QQ4\""
+      }
+    ]
   }
 ]
