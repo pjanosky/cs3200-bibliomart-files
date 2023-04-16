@@ -107,12 +107,14 @@ def get_listings():
 
 
 # Listing Search Page
-# /users - GET      -------------------- DONE -------------------
+# /users - GET
 # Get a list of all the user in the database to populate the user drop down
 @buyers.route('/users', methods=['GET'])
 def get_users():
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT * FROM Users')
+    cursor.execute(f'''SELECT CONCAT(FirstName, ' ', LastName) 
+            AS Label, UserId AS Value
+            FROM Users;''')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     users = cursor.fetchall()
