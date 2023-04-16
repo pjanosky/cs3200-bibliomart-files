@@ -503,7 +503,20 @@
     "modified": "2023-04-16T23:16:06.113Z",
     "headers": [],
     "params": [],
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
   },
   {
     "_id": "9701ad48-10d0-462b-8e8b-c31e82ccaef3",
@@ -517,7 +530,14 @@
     "modified": "2023-04-16T23:16:12.781Z",
     "headers": [],
     "params": [],
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
+      }
+    ]
   },
   {
     "_id": "c5a19c81-3964-4bea-b1a3-e330bc531fd9",
@@ -675,17 +695,17 @@
     "_id": "152c0b0a-9997-4533-9cb6-3ef874ff3f55",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
-    "name": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "name": "UserReviews Put Invalid",
     "url": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
     "method": "PUT",
     "sortNum": 10000,
     "created": "2023-04-16T00:53:59.741Z",
-    "modified": "2023-04-16T00:53:59.741Z",
+    "modified": "2023-04-16T22:52:23.035Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"UserId\":\"0Mg864B288\",\n    \"ReviewId\": \"X8iY856L6P\",\n    \"Comment\":\"She returned it\",\n    \"ReviewDate\":\"2022-03-31 16:17:44\",\n    \"Rating\": 2\n    }",
+      "raw": "{\n  \"UserId\":\"0Mg864B288\",\n  \"ReviewId\": \"X8iY856L6P\",\n  \"ReviewComment\": \"Nvevermind a book\",\n  \"ReviewDate\":\"2023-03-07 03:55:19\",\n  \"Rating\": 2\n}",
       "form": []
     },
     "tests": [
@@ -707,7 +727,7 @@
     "_id": "6e11991f-519a-4645-91a5-0b92991a970f",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
-    "name": "localhost:8001/a/UserReviews/Gone/Bye",
+    "name": "Delete UserReview Invalid",
     "url": "localhost:8001/a/UserReviews/Gone/Bye",
     "method": "DELETE",
     "sortNum": 20000,
@@ -734,12 +754,12 @@
     "_id": "f584e4cd-683e-4973-a670-a74850a9932a",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
-    "name": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "name": "Get a selected User Review Valid",
     "url": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
     "method": "GET",
-    "sortNum": 30000,
+    "sortNum": 55000,
     "created": "2023-04-16T00:54:29.629Z",
-    "modified": "2023-04-16T00:54:29.629Z",
+    "modified": "2023-04-16T19:13:03.049Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -748,7 +768,7 @@
     "_id": "90d51807-ed5a-4c45-9d3f-3075243c4d12",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
-    "name": "localhost:8001/a/UserReviews/Sfx1Bq2478/oKWpul6343",
+    "name": "Delete UserReview Valid",
     "url": "localhost:8001/a/UserReviews/Sfx1Bq2478/oKWpul6343",
     "method": "DELETE",
     "sortNum": 40000,
@@ -775,7 +795,7 @@
     "_id": "b163e3d5-526d-4dd2-86fe-f081dad8e7ef",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
-    "name": "localhost:8001/a/UserReviews/Invalid",
+    "name": "Post UserReview invalid",
     "url": "localhost:8001/a/UserReviews/Invalid",
     "method": "POST",
     "sortNum": 50000,
@@ -796,12 +816,12 @@
     "_id": "476df735-5aca-42f6-8d2f-d5be8a4d5e18",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
-    "name": "localhost:8001/a/UserReviews/JSy8h8pTvE",
+    "name": "Post UserReview valid",
     "url": "localhost:8001/a/UserReviews/JSy8h8pTvE",
     "method": "POST",
-    "sortNum": 60000,
+    "sortNum": 45000,
     "created": "2023-04-16T00:55:53.492Z",
-    "modified": "2023-04-16T00:55:53.492Z",
+    "modified": "2023-04-16T19:25:05.003Z",
     "headers": [],
     "params": [],
     "body": {
@@ -1307,6 +1327,190 @@
         "custom": "",
         "action": "equal",
         "value": "200"
+      }
+    ]
+  },
+  {
+    "_id": "2190fdef-9b4a-4c4b-9bc8-37fd1bf39e27",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/employees - GET valid",
+    "url": "localhost:8001/a/employees",
+    "method": "GET",
+    "sortNum": 220000,
+    "created": "2023-04-16T22:52:02.581Z",
+    "modified": "2023-04-16T22:52:02.581Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"EmployeeId\": \"06S884Ech3\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"FirstName\": \"Etti\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"LastName\": \"Beardmore\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"EmployeeId\": \"0Eo21P4QQ4\""
+      }
+    ]
+  },
+  {
+    "_id": "79095ed5-cc61-49b5-aed5-809d0db26153",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings/ PUT VALID",
+    "url": "localhost:8001/a/listings/",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2023-04-15T23:53:10.458Z",
+    "modified": "2023-04-16T01:28:50.801Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "listing_id",
+          "value": "123"
+        },
+        {
+          "name": "quantity",
+          "value": "7"
+        },
+        {
+          "name": "price",
+          "value": "9.99"
+        },
+        {
+          "name": "employee_id",
+          "value": "123xyz"
+        },
+        {
+          "name": "shipper_name",
+          "value": "FEDX"
+        },
+        {
+          "name": "isbn",
+          "value": "123456-9"
+        }
+      ]
+    },
+    "tests": []
+  },
+
+  {
+    "_id": "bfd778f4-ace4-4326-910e-4ec301f0169d",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings/ PUT VALID",
+    "url": "localhost:8001/a/Listings/v3rIdX78u0",
+    "method": "PUT",
+    "sortNum": 70000,
+    "created": "2023-04-16T00:12:11.218Z",
+    "modified": "2023-04-16T19:14:29.682Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+{
+    "_id": "152c0b0a-9997-4533-9cb6-3ef874ff3f55",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "UserReviews Put Invalid",
+    "url": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "method": "PUT",
+    "sortNum": 10000,
+    "created": "2023-04-16T00:53:59.741Z",
+    "modified": "2023-04-16T22:52:23.035Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"UserId\":\"0Mg864B288\",\n  \"ReviewId\": \"X8iY856L6P\",\n  \"ReviewComment\": \"Nvevermind a book\",\n  \"ReviewDate\":\"2023-03-07 03:55:19\",\n  \"Rating\": 2\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+{
+    "_id": "e14ad3a5-c331-4895-948f-b11349ed3ba8",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings/delete/ DELETE VALID",
+    "url": "localhost:8001/a/Listings/v3rIdX78u0",
+    "method": "DELETE",
+    "sortNum": 80000,
+    "created": "2023-04-15T22:31:26.693Z",
+    "modified": "2023-04-16T19:24:05.396Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "9701ad48-10d0-462b-8e8b-c31e82ccaef3",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings/delete/ DELETE INVALID",
+    "url": "localhost:8001/a/Listings/oogabooga",
+    "method": "DELETE",
+    "sortNum": 90000,
+    "created": "2023-04-15T22:34:35.555Z",
+    "modified": "2023-04-16T19:24:48.059Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
       }
     ]
   }

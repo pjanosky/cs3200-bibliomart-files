@@ -250,25 +250,23 @@ def post_UserReviews(UserId):
 def update_UserReviews(UserId, ReviewId):
     
     req_data = request.json
-    UserId = req_data['UserId']
-    ReviewId = req_data['ReviewId']
-    comment = req_data['Comment']
+    ReviewComment = req_data['ReviewComment']
     ReviewDate = req_data['ReviewDate']
     Rating = req_data['Rating']
-
+    
     cursor = db.get_db().cursor()
-    query = f"INSERT INTO UserReviews (UserId, ReviewId, ReviewComment, ReviewDate, Rating) VALUES (UserId, ReviewId, '{comment}', '{ReviewDate}', {Rating})"
+    query = f"UPDATE UserReviews SET ReviewComment = '{ReviewComment}', ReviewDate = '{ReviewDate}', Rating = '{Rating}' WHERE UserId = '{UserId}' AND  ReviewId = '{ReviewId}' "
+    # Comment = %s, ReviewDate = %s, Rating = %s, WHERE UserId = %s AND ReviewId = %s", (Comment, ReviewDate, Rating, UserId, ReviewId)
     current_app.logger.info(query)
-
+    
     try: 
         cursor.execute(query)
         db.get_db().commit()
     except IntegrityError as e:
         return make_response(str(e), 400)
-    
+
     return "Success"
-
-
+ 
 
 
 # /users - GET
