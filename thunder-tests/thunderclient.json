@@ -481,9 +481,14 @@
     "method": "POST",
     "sortNum": 40000,
     "created": "2023-04-15T22:26:02.695Z",
-    "modified": "2023-04-16T01:28:49.396Z",
+    "modified": "2023-04-16T20:12:06.036Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"ListingId\": \"\",\n    \"Quantity\": \"5\",\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"719980671-X\"\n}\n",
+      "form": []
+    },
     "tests": []
   },
   {
@@ -491,11 +496,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/delete/ DELETE VALID",
-    "url": "localhost:8001/a/listings/delete/v3rIdX78u0",
+    "url": "localhost:8001/a/listings/delete/VNfiQteIAv",
     "method": "DELETE",
     "sortNum": 80000,
     "created": "2023-04-15T22:31:26.693Z",
-    "modified": "2023-04-16T01:28:54.312Z",
+    "modified": "2023-04-16T21:22:03.076Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -505,11 +510,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/delete/ DELETE INVALID",
-    "url": "localhost:8001/a/listings/delete/v3rIdX78",
+    "url": "localhost:8001/a/listings/delete/8",
     "method": "DELETE",
     "sortNum": 90000,
     "created": "2023-04-15T22:34:35.555Z",
-    "modified": "2023-04-16T01:28:55.969Z",
+    "modified": "2023-04-16T20:32:35.526Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -572,12 +577,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/ GET INVALID",
-    "url": "localhost:8001/a/listings/get/3489391-6",
+    "url": "localhost:8001/a/listings/3489391-6",
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-04-15T23:38:21.672Z",
-    "modified": "2023-04-16T01:28:46.541Z",
-    "modified": "2023-04-16T01:21:16.908Z",
+    "modified": "2023-04-16T19:38:42.019Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -587,11 +591,11 @@
     "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
     "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
     "name": "/b/authors/<id> GET VALID",
-    "url": "localhost:8001/b/authors/Jy8Fl09F30",
+    "url": "localhost:8001/b/authors/sH2O868225",
     "method": "GET",
     "sortNum": 130000,
     "created": "2023-04-15T23:43:59.159Z",
-    "modified": "2023-04-16T01:28:39.755Z",
+    "modified": "2023-04-16T19:20:58.916Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -600,43 +604,18 @@
     "_id": "79095ed5-cc61-49b5-aed5-809d0db26153",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/listings/ PUT VALID",
+    "name": "/a/listings/ POST VALID",
     "url": "localhost:8001/a/listings/",
     "method": "POST",
     "sortNum": 50000,
     "created": "2023-04-15T23:53:10.458Z",
-    "modified": "2023-04-16T01:28:50.801Z",
+    "modified": "2023-04-16T20:43:22.570Z",
     "headers": [],
     "params": [],
     "body": {
-      "type": "formencoded",
-      "raw": "",
-      "form": [
-        {
-          "name": "listing_id",
-          "value": "123"
-        },
-        {
-          "name": "quantity",
-          "value": "7"
-        },
-        {
-          "name": "price",
-          "value": "9.99"
-        },
-        {
-          "name": "employee_id",
-          "value": "123xyz"
-        },
-        {
-          "name": "shipper_name",
-          "value": "FEDX"
-        },
-        {
-          "name": "isbn",
-          "value": "123456-9"
-        }
-      ]
+      "type": "json",
+      "raw": "{\n    \"ListingId\": \"654321\",\n    \"Quantity\": 5,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"719980671-7\"\n}\n",
+      "form": []
     },
     "tests": []
   },
@@ -645,12 +624,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/ GET VALID",
-    "url": "localhost:8001/a/listings/get/445068598-9",
+    "url": "localhost:8001/a/listings/344589391-8",
     "method": "GET",
     "sortNum": 30000,
     "created": "2023-04-16T00:02:01.661Z",
-    "modified": "2023-04-16T01:21:59.830Z",
-    "modified": "2023-04-16T01:28:48.042Z",
+    "modified": "2023-04-16T19:38:45.755Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -660,13 +638,18 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/ PUT INVALID",
-    "url": "localhost:8001/a/listings/",
+    "url": "localhost:8001/a/listings/put/awfaw",
     "method": "PUT",
     "sortNum": 60000,
     "created": "2023-04-16T00:12:04.755Z",
-    "modified": "2023-04-16T01:28:51.986Z",
+    "modified": "2023-04-16T20:23:14.245Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"ListingId\": \"\",\n    \"Quantity\": 1294,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"978-3-16-148410-0\"\n}\n",
+      "form": []
+    },
     "tests": []
   },
   {
@@ -674,13 +657,18 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/ PUT VALID",
-    "url": "localhost:8001/a/listings/",
+    "url": "localhost:8001/a/listings/put/u0baj954xr",
     "method": "PUT",
     "sortNum": 70000,
     "created": "2023-04-16T00:12:11.218Z",
-    "modified": "2023-04-16T01:28:53.151Z",
+    "modified": "2023-04-16T21:06:26.417Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"ListingId\": \"z1X3W37W19\",\n    \"Quantity\": 7,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"901660421-9\"\n}\n",
+      "form": []
+    },
     "tests": []
   },
   {

@@ -44,147 +44,104 @@ def get_textbooks():
     return the_response
 
 
-# /listings/get/{Title} - GET
+# /listings/get/{Title} - GET ---------- DONE ----------
 # Gets listing with given isbn
-@administrators.route('/listings/get/<ISBN>', methods=['GET'])
+@administrators.route('/listings/<ISBN>', methods=['GET'])
 def get_listing(ISBN):
+    query = f'''SELECT * 
+                FROM Listings 
+                WHERE ISBN = '{ISBN}'; '''
     cursor = db.get_db().cursor()
-    cursor.execute("SELECT * FROM Listings WHERE ISBN = %s", (ISBN,))
-    result = cursor.fetchall()
-    cursor.close()
-    db.get_db().close()
-    if result:
-        return jsonify(result)
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    results = cursor.fetchall()
+    if not results:
+        error_msg = {'error': 'No listings found for this ISBN.'}
+        the_response = make_response(jsonify(error_msg))
+        the_response.status_code = 404
     else:
-        return jsonify({"message": "Listing not found"}), 404
+        for row in results:
+            json_data.append(dict(zip(row_headers, row)))
+        the_response = make_response(jsonify(json_data))
+        the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
 
 # /listings/ - POST
 # Adds a new listing for a given textbook
 @administrators.route('/listings/', methods=['POST'])
-def create_listing():
-    current_app.logger.info('Processing Info')
-    req_data = request.get_json()
-    current_app.logger.info(req_data)
+def make_listing():
+    data = request.json
+    listing_id = data['ListingId']
+    quantity = data['Quantity']
+    price = data['Price']
+    employee_id = data['EmployeeId']
+    shipper_name = data['ShipperName']
+    isbn = data['ISBN']
 
-    listing_id = req_data['ListingId']
-    quantity = req_data['Quantity']
-    price = req_data['Price']
-    employee_id = req_data['EmployeeId']
-    shipper_name = req_data['ShipperName']
-    isbn = req_data['ISBN']
+    # add the new purchase
+    query = f'''INSERT INTO Listings
+            (ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN)
+            VALUES ('{listing_id}', '{quantity}', '{price}', '{employee_id}', '{shipper_name}', '{isbn}');'''
 
-    insrt_stmt = "INSERT INTO Listings (ListingId, Quantity, Price, EmployeeId, ShipperName, ISBN) \
-        VALUES (%s, %s, %s, %s, %s, %s)"
-    insrt_values = (listing_id, quantity, price, employee_id, shipper_name, isbn)
-
-    current_app.logger.info('Insert statement: %s, Values: %s', insrt_stmt, insrt_values)
+    current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
     try:
-        cursor.execute(insrt_stmt, insrt_values)
+        cursor.execute(query)
         db.get_db().commit()
-    except Exception as e:
+        return jsonify({"message": "Listing created successfully"}), 201
+
+    except KeyError as e:
+        # if a required field is missing from the JSON data
+        return make_response(f"Missing field: {e}", 400)
+
+    except IntegrityError as e:
+        # if the listing or user ids are invalid
         db.get_db().rollback()
-        cursor.close()
-        db.get_db().close()
-        current_app.logger.error(f"Failed to insert listing: {e}")
-        return jsonify({"message": "Failed to create listing"}), 500
+        return make_response(str(e), 400)
 
-    cursor.close()
-    db.get_db().close()
-
-    return jsonify({"message": "Listing created successfully"}), 201
-
-
-
-# /listings/{listingId} - PUT
-# Updates attributes of listing 
-@administrators.route('/Listings/<ListingId>')
-def update_listing(ListingID):
-    # access json data from requeted object
-    current_app.logger.info('Processing form data')
-    req_data = request.get_json()
-    current_app.logger.info(req_data)
-  
-    ListingId = req_data['ListingId']
-    Quantity = req_data['Quantity']
-    Price = req_data['Price']
-    EmployeeId = req_data['EmployeeId']
-    ShipperName = req_data['ShipperName']
-    ISBN = req_data ['ISBN']
+    except Exception as e:
+        # for any other exception
+        db.get_db().rollback()
+        return make_response(str(e), 500)
     
 
-    # construct the insert statement
-    insert_stmt = 'INSERT INTO Listings WHERE ListingId = ListingID (Quantity, Price, EmployeeId, ShipperName, ISBN) VALUES ("'
-    insert_stmt += ListingId + '","' + Quantity + '","' + Price + '","' + EmployeeId + '","' + ShipperName + '",' + ISBN + ')'
-
-    current_app.logger.info(insert_stmt)
-
-
-@administrators.route('/listings/<int:listingId>', methods=['PUT'])
+# /listings/put/{listingId} - PUT
+# Updates attributes of listing 
+@administrators.route('/listings/put/<listingId>', methods=['PUT'])
 def edit_listing(listingId):
     if request.content_type != 'application/json':
         return jsonify({"error": "Invalid Content-Type"}), 400
-    
+     
     req_data = request.get_json()
-    quantity = req_data['Quantity']
-    price = req_data['Price']
-    employee_id = req_data['EmployeeId']
-    shipper_name = req_data['ShipperName']
-    isbn = req_data['ISBN']
+    quantity = req_data.get('Quantity')
+    price = req_data.get('Price')
+    employee_id = req_data.get('EmployeeId')
+    shipper_name = req_data.get('ShipperName')
+    isbn = req_data.get('ISBN')
     
+    # Check if the listing with the given listingId exists
     cursor = db.get_db().cursor()
-    cursor.execute(
-        "UPDATE Listings SET Quantity = %s, Price = %s, EmployeeId = %s, ShipperName = %s, ISBN = %s WHERE ListingId = %s",
-        (quantity, price, employee_id, shipper_name, isbn, listingId)
-    )
+    cursor.execute("SELECT * FROM Listings WHERE ListingId = %s", (listingId,))
+    listing = cursor.fetchone()
+    if not listing:
+        return jsonify({"message": f"Listing {listingId} not found"}), 404
+
+    query = "UPDATE Listings SET Quantity = %s, Price = %s, EmployeeId = %s, ShipperName = %s, ISBN = %s WHERE ListingId = %s"
+    cursor.execute(query, (quantity, price, employee_id, shipper_name, isbn, listingId))
     db.get_db().commit()
     cursor.close()
-    db.get_db().close()
 
     # return success message
     return jsonify({"message": "Listing updated successfully"})
 
-    #execute the querey
-    cursor = db.get_db().cursor()
-    cursor.execute(insert_stmt)
-    db.get_db().commit()
-
-    return "Success"
 
 
-# /listings/{listingId} - DELETE
+# /listings/delete/{listingId} - DELETE
 # Removes a given listing
-@administrators.route('/Listings/<ListingId>')
-def delete_listing(ListingId):
-     # access json data from requeted object
-    current_app.logger.info('Processing form data')
-    req_data = request.get_json()
-    current_app.logger.info(req_data)
-
-    ListingId = req_data['ListingID']
-    Quantity = req_data['Quantity']
-    Price = req_data['Price']
-    EmployeeId = req_data['EmployeeId']
-    ShipperName = req_data['ShipperName']
-    ISBN = req_data ['ISBN']
-    
-
-    # construct the insert statement
-    insert_stmt = 'DELETE FROM Listings (ListingId, Quantity, Price, EmployeeId, ShipperName, ISBN) VALUES ("'
-    insert_stmt += ListingId + '","' + Quantity + '","' + Price + '","' + EmployeeId + '","' + ShipperName + '",' + ISBN + ')'
-
-    current_app.logger.info(insert_stmt)
-
-    #execute the querey
-    cursor = db.get_db().cursor()
-    cursor.execute(insert_stmt)
-    db.get_db().commit()
-
-    return "Success"
-
-
-
 @administrators.route('/listings/delete/<listingId>', methods=['DELETE'])
 def delete_listing(listingId):
     cursor = db.get_db().cursor()
@@ -199,7 +156,6 @@ def delete_listing(listingId):
         return jsonify({"message": f"Failed to delete listing {listingId}"})
     else:
         return jsonify({"message": f"Listing {listingId} deleted successfully"})
-
 
 
 # Reviews Edit Page
