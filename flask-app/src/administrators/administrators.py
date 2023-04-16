@@ -27,7 +27,7 @@ administrators = Blueprint('administrators', __name__)
 
 
 # Listing Edit Page
-# /textbooks - GET      ---------- DONE -------------
+# /textbooks - GET
 # Get a list of textbooks and their associated listings
 @administrators.route('/textbooks', methods=['GET'])
 def get_textbooks():
@@ -45,7 +45,7 @@ def get_textbooks():
     return the_response
 
 
-# /listings/get/{Title} - GET ---------- DONE ----------
+# /listings/{Title} - GET
 # Gets listing with given isbn
 @administrators.route('/listings/<ISBN>', methods=['GET'])
 def get_listing(ISBN):
@@ -70,7 +70,7 @@ def get_listing(ISBN):
     return the_response
 
 
-# /listings/ - POST ---------- DONE ----------
+# /listings/ - POST
 # Adds a new listing for a given textbook
 @administrators.route('/listings/', methods=['POST'])
 def make_listing():
@@ -110,9 +110,9 @@ def make_listing():
         return make_response(str(e), 500)
     
 
-# /listings/put/{listingId} - PUT
+# /listings/{listingId} - PUT
 # Updates attributes of listing 
-@administrators.route('/listings/put/<listingId>', methods=['PUT'])
+@administrators.route('/listings/<listingId>', methods=['PUT'])
 def edit_listing(listingId):
     if request.content_type != 'application/json':
         return jsonify({"error": "Invalid Content-Type"}), 400
@@ -141,9 +141,9 @@ def edit_listing(listingId):
 
 
 
-# /listings/delete/{listingId} - DELETE
+# /listings/{listingId} - DELETE
 # Removes a given listing
-@administrators.route('/listings/delete/<listingId>', methods=['DELETE'])
+@administrators.route('/listings/<listingId>', methods=['DELETE'])
 def delete_listing(listingId):
     cursor = db.get_db().cursor()
     cursor.execute("DELETE FROM Listings WHERE ListingId = %s", (listingId,))

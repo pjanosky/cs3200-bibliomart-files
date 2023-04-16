@@ -496,11 +496,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/delete/ DELETE VALID",
-    "url": "localhost:8001/a/listings/delete/VNfiQteIAv",
+    "url": "localhost:8001/a/listings/VNfiQteIAv",
     "method": "DELETE",
     "sortNum": 80000,
     "created": "2023-04-15T22:31:26.693Z",
-    "modified": "2023-04-16T21:22:03.076Z",
+    "modified": "2023-04-16T23:16:06.113Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -510,11 +510,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/delete/ DELETE INVALID",
-    "url": "localhost:8001/a/listings/delete/8",
+    "url": "localhost:8001/a/listings/8",
     "method": "DELETE",
     "sortNum": 90000,
     "created": "2023-04-15T22:34:35.555Z",
-    "modified": "2023-04-16T20:32:35.526Z",
+    "modified": "2023-04-16T23:16:12.781Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -626,9 +626,9 @@
     "name": "/a/listings/ GET VALID",
     "url": "localhost:8001/a/listings/344589391-8",
     "method": "GET",
-    "sortNum": 30000,
+    "sortNum": 15000,
     "created": "2023-04-16T00:02:01.661Z",
-    "modified": "2023-04-16T19:38:45.755Z",
+    "modified": "2023-04-16T23:15:28.671Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -638,11 +638,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/ PUT INVALID",
-    "url": "localhost:8001/a/listings/put/awfaw",
+    "url": "localhost:8001/a/listings/awfaw",
     "method": "PUT",
     "sortNum": 60000,
     "created": "2023-04-16T00:12:04.755Z",
-    "modified": "2023-04-16T20:23:14.245Z",
+    "modified": "2023-04-16T23:15:41.627Z",
     "headers": [],
     "params": [],
     "body": {
@@ -657,11 +657,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/ PUT VALID",
-    "url": "localhost:8001/a/listings/put/u0baj954xr",
+    "url": "localhost:8001/a/listings/u0baj954xr",
     "method": "PUT",
     "sortNum": 70000,
     "created": "2023-04-16T00:12:11.218Z",
-    "modified": "2023-04-16T22:49:50.563Z",
+    "modified": "2023-04-16T23:15:59.685Z",
     "headers": [],
     "params": [],
     "body": {
@@ -1307,51 +1307,6 @@
         "custom": "",
         "action": "equal",
         "value": "200"
-      }
-    ]
-  },
-  {
-    "_id": "2190fdef-9b4a-4c4b-9bc8-37fd1bf39e27",
-    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
-    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/employees - GET valid",
-    "url": "localhost:8001/a/employees",
-    "method": "GET",
-    "sortNum": 220000,
-    "created": "2023-04-16T22:52:02.581Z",
-    "modified": "2023-04-16T22:52:02.581Z",
-    "headers": [],
-    "params": [],
-    "tests": [
-      {
-        "type": "res-code",
-        "custom": "",
-        "action": "equal",
-        "value": "200"
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "contains",
-        "value": "\"EmployeeId\": \"06S884Ech3\""
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "contains",
-        "value": "\"FirstName\": \"Etti\""
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "contains",
-        "value": "\"LastName\": \"Beardmore\""
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "contains",
-        "value": "\"EmployeeId\": \"0Eo21P4QQ4\""
       }
     ]
   }

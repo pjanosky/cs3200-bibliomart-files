@@ -107,7 +107,7 @@ def get_listings():
 
 
 # Listing Search Page
-# /users - GET      -------------------- DONE -------------------
+# /users - GET
 # Get a list of all the user in the database to populate the user drop down
 @buyers.route('/users', methods=['GET'])
 def get_users():
