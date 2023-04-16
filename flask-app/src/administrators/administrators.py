@@ -69,7 +69,7 @@ def get_listing(ISBN):
     return the_response
 
 
-# /listings/ - POST
+# /listings/ - POST ---------- DONE ----------
 # Adds a new listing for a given textbook
 @administrators.route('/listings/', methods=['POST'])
 def make_listing():
@@ -84,7 +84,7 @@ def make_listing():
     # add the new purchase
     query = f'''INSERT INTO Listings
             (ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN)
-            VALUES ('{listing_id}', '{quantity}', '{price}', '{employee_id}', '{shipper_name}', '{isbn}');'''
+            VALUES ('{listing_id}', '{quantity}', '{price}', '{employee_id}', '{shipper_name or "Null"}', '{isbn}');'''
 
     current_app.logger.info(query)
 

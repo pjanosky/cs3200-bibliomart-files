@@ -135,7 +135,8 @@ CREATE TABLE Sales
 
 
     FOREIGN KEY (UserId) REFERENCES Users (UserId),
-    FOREIGN KEY (EmployeeId) REFERENCES Employees (EmployeeId),
+    FOREIGN KEY (EmployeeId) REFERENCES Employees (EmployeeId)
+        ON DELETE CASCADE,
     FOREIGN KEY (ShipperName) REFERENCES Shippers (ShipperName),
     FOREIGN KEY (ISBN) REFERENCES Textbooks (ISBN)
 );
@@ -159,6 +160,7 @@ CREATE TABLE RentalInfo
 
     FOREIGN KEY (UserId) REFERENCES Users (UserId),
     FOREIGN KEY (ListingId) REFERENCES Listings (ListingId)
+        ON DELETE CASCADE
 );
 
 
@@ -182,4 +184,5 @@ CREATE TABLE PurchaseInfo
 
     FOREIGN KEY (UserId) REFERENCES Users (UserId),
     FOREIGN KEY (ListingId) REFERENCES Listings (ListingId)
+        ON DELETE CASCADE
 );
