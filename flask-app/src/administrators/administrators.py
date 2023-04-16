@@ -280,7 +280,8 @@ def update_UserReviews(UserId, ReviewId):
 # get all of the employees in the database
 @administrators.route('/employees', methods=['GET'])
 def get_employees():
-    query = f'''SELECT EmployeeId, FirstName, LastName FROM Employees;'''
+    query = f'''SELECT CONCAT(FirstName, ' ', LastName) as Label, EmployeeId as Value 
+    FROM Employees;'''
 
     current_app.logger.info(query)
     cursor = db.get_db().cursor()
