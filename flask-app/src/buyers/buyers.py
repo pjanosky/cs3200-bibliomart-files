@@ -69,22 +69,30 @@ def get_users():
 
 # /authors/{id} - GET
 # Returns details on the author and other book they wrote
-@buyers.route('/authors/{id}', methods=['GET'])
-def get_listing(authorid):
-    cursor = db.get_db().cursor()
-    cursor.execute("SELECT * FROM Authors join Textbooks on Authors.isbn=Textbooks.isbn \
-                   WHERE isbn = %s", (authorid,))
-    result = cursor.fetchone()
-    cursor.close()
-    db.get_db().close()
-    if result is not None:
-        return jsonify(result)
-    else:
-        return jsonify({"message": "Author not found"}), 404
-
-
-
-
+@buyers.route('/authors/<id>', methods=['GET'])
+def get_author(id):
+    try:
+        query = """
+            SELECT *
+            FROM Authors
+            WHERE AuthorID=%s
+        """
+        cursor = db.get_db().cursor()
+        cursor.execute(query, (id,))
+        row_headers = [x[0] for x in cursor.description]
+        json_data = []
+        authors = cursor.fetchall()
+        for row in authors:
+             json_data.append(dict(zip(row_headers, row)))
+        the_response = make_response(jsonify(json_data))
+        the_response.status_code = 200
+        the_response.mimetype = 'application/json'
+        return the_response
+    except Exception as e:
+        print(e)
+        return "Error"
+# JOIN AuthorDetails ON Authors.AuthorID = AuthorDetails.AuthorId
+#                JOIN Textbooks on AuthorDetails.ISBN = Textbooks.ISBN
 
 # /tags{isbn} - GET
 # Gets all of the tags associated with the given book
