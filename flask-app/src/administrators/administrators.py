@@ -32,7 +32,8 @@ administrators = Blueprint('administrators', __name__)
 @administrators.route('/textbooks', methods=['GET'])
 def get_textbooks():
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT * FROM Textbooks JOIN Listings')
+    cursor.execute('SELECT * FROM Textbooks LEFT OUTER JOIN Listings \
+                    ON Textbooks.ISBN = Listings.ISBN;')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     txbks = cursor.fetchall()
