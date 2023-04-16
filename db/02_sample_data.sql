@@ -486,11 +486,6 @@ INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALU
 INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('52n8q0g3X8','Stu','Penrice',862032006,'Actuary',91188);
 INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('Ld55fA1mv9','Melvin','Wainscot',065628611,'Quality Control Specialist',118024);
 INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('77hSBP94Ki','Stefania','Bunce',988085303,'Senior Quality Engineer',103756);
-INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('06S884Ech3','Etti','Beardmore',452864368,'Graphic Designer',87447);
-INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('71vaiOg978','Magdalen','Goodson',457372000,'Administrative Assistant I',82293);
-INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('x3yg8397V1','Mariquilla','Mottershead',765217932,'Technical Writer',103774);
-INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('9dHEyM3ta0','Maurita','Attril',121883695,'Product Engineer',67325);
-INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('7m4RkkB2R1','Nat','Petriello',717562519,'Actuary',96356);
 
 
 -- Shippers
@@ -546,12 +541,6 @@ INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUE
 INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('4O79SstC9j',412,36.36,'936gHuLA5X',NULL,'471835215-0');
 INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('ddiEMp8lKv',208,20.19,'9qJ47586gp','Fedex','485434484-9');
 INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('5Q130n9Q0e',261,60.39,'52n8q0g3X8','USPS','553646229-6');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('95Y49z0687',224,52.67,'Z59f0458pX',NULL,'679463085-0');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('d0311Oz4h4',294,94.3,'8x21mSDv98',NULL,'367725719-0');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('r9kJ2jX829',308,37.19,'7m4RkkB2R1',NULL,'901660421-9');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('n8kd98p9tc',147,44.87,'9dHEyM3ta0','Maersk','242290486-6');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('80JS6JA2ow',261,40.69,'wN4af3P95t',NULL,'912113511-8');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('VNfiQteIAv',237,95.03,'6GK37w93G6','Fedex','052336608-6');
 
 
 -- Sales
