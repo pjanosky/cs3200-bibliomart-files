@@ -546,12 +546,6 @@ INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUE
 INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('4O79SstC9j',412,36.36,'936gHuLA5X',NULL,'471835215-0');
 INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('ddiEMp8lKv',208,20.19,'9qJ47586gp','Fedex','485434484-9');
 INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('5Q130n9Q0e',261,60.39,'52n8q0g3X8','USPS','553646229-6');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('95Y49z0687',224,52.67,'Z59f0458pX',NULL,'679463085-0');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('d0311Oz4h4',294,94.3,'8x21mSDv98',NULL,'367725719-0');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('r9kJ2jX829',308,37.19,'7m4RkkB2R1',NULL,'901660421-9');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('n8kd98p9tc',147,44.87,'9dHEyM3ta0','Maersk','242290486-6');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('80JS6JA2ow',261,40.69,'wN4af3P95t',NULL,'912113511-8');
-INSERT INTO Listings(ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN) VALUES ('VNfiQteIAv',237,95.03,'6GK37w93G6','Fedex','052336608-6');
 
 
 -- Sales

@@ -107,8 +107,8 @@ def get_listings():
 
 
 # Listing Search Page
-# /users - GET
-# Get a list of all the user in the database to popular the user drop down
+# /users - GET      -------------------- DONE -------------------
+# Get a list of all the user in the database to populate the user drop down
 @buyers.route('/users', methods=['GET'])
 def get_users():
     cursor = db.get_db().cursor()
@@ -125,33 +125,31 @@ def get_users():
 
 
 
-
 # /authors/{id} - GET
 # Returns details on the author and other book they wrote
-@buyers.route('/authors/<id>', methods=['GET'])
-def get_author(id):
-    try:
-        query = """
-            SELECT *
-            FROM Authors
-            WHERE AuthorID=%s
-        """
-        cursor = db.get_db().cursor()
-        cursor.execute(query, (id,))
-        row_headers = [x[0] for x in cursor.description]
-        json_data = []
-        authors = cursor.fetchall()
-        for row in authors:
-             json_data.append(dict(zip(row_headers, row)))
-        the_response = make_response(jsonify(json_data))
-        the_response.status_code = 200
-        the_response.mimetype = 'application/json'
-        return the_response
-    except Exception as e:
-        print(e)
-        return "Error"
-# JOIN AuthorDetails ON Authors.AuthorID = AuthorDetails.AuthorId
-#                JOIN Textbooks on AuthorDetails.ISBN = Textbooks.ISBN
+@buyers.route('/authors/<AuthorID>', methods=['GET'])
+def get_author(AuthorID):
+    query = f'''SELECT A.AuthorID, FirstName, LastName, AD.ISBN, T.Title 
+    FROM Authors A
+            JOIN AuthorDetails AD ON A.AuthorID = AD.AuthorId
+            JOIN  Textbooks T on AD.ISBN = T.ISBN
+    WHERE A.AuthorID = '{AuthorID}';'''
+
+    current_app.logger.info(query)
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    
+    row_headers = [x[0] for x in cursor.description]
+    the_data = cursor.fetchall()
+    if len(the_data) < 1:
+        return make_response(f'invalid Author ID: {AuthorID}', 400)
+    json_data = dict(zip(row_headers, the_data[0]))
+    
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
 
 # /tags{isbn} - GET
 # Gets all of the tags associated with the given book

@@ -481,9 +481,14 @@
     "method": "POST",
     "sortNum": 40000,
     "created": "2023-04-15T22:26:02.695Z",
-    "modified": "2023-04-16T01:28:49.396Z",
+    "modified": "2023-04-16T20:12:06.036Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"ListingId\": \"\",\n    \"Quantity\": \"5\",\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"719980671-X\"\n}\n",
+      "form": []
+    },
     "tests": []
   },
   {
@@ -491,11 +496,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/delete/ DELETE VALID",
-    "url": "localhost:8001/a/Listings/v3rIdX78u0",
+    "url": "localhost:8001/a/listings/delete/VNfiQteIAv",
     "method": "DELETE",
     "sortNum": 80000,
     "created": "2023-04-15T22:31:26.693Z",
-    "modified": "2023-04-16T19:24:05.396Z",
+    "modified": "2023-04-16T21:22:03.076Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -518,11 +523,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/delete/ DELETE INVALID",
-    "url": "localhost:8001/a/Listings/oogabooga",
+    "url": "localhost:8001/a/listings/delete/8",
     "method": "DELETE",
     "sortNum": 90000,
     "created": "2023-04-15T22:34:35.555Z",
-    "modified": "2023-04-16T19:24:48.059Z",
+    "modified": "2023-04-16T20:32:35.526Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -596,7 +601,7 @@
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-04-15T23:38:21.672Z",
-    "modified": "2023-04-16T01:28:46.541Z",
+    "modified": "2023-04-16T19:38:42.019Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -606,11 +611,11 @@
     "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
     "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
     "name": "/b/authors/<id> GET VALID",
-    "url": "localhost:8001/b/authors/Jy8Fl09F30",
+    "url": "localhost:8001/b/authors/sH2O868225",
     "method": "GET",
     "sortNum": 130000,
     "created": "2023-04-15T23:43:59.159Z",
-    "modified": "2023-04-16T01:28:39.755Z",
+    "modified": "2023-04-16T19:20:58.916Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -619,43 +624,18 @@
     "_id": "79095ed5-cc61-49b5-aed5-809d0db26153",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/listings/ PUT VALID",
+    "name": "/a/listings/ POST VALID",
     "url": "localhost:8001/a/listings/",
     "method": "POST",
     "sortNum": 50000,
     "created": "2023-04-15T23:53:10.458Z",
-    "modified": "2023-04-16T01:28:50.801Z",
+    "modified": "2023-04-16T22:48:30.006Z",
     "headers": [],
     "params": [],
     "body": {
-      "type": "formencoded",
-      "raw": "",
-      "form": [
-        {
-          "name": "listing_id",
-          "value": "123"
-        },
-        {
-          "name": "quantity",
-          "value": "7"
-        },
-        {
-          "name": "price",
-          "value": "9.99"
-        },
-        {
-          "name": "employee_id",
-          "value": "123xyz"
-        },
-        {
-          "name": "shipper_name",
-          "value": "FEDX"
-        },
-        {
-          "name": "isbn",
-          "value": "123456-9"
-        }
-      ]
+      "type": "json",
+      "raw": "{\n    \"ListingId\": \"654321\",\n    \"Quantity\": 5,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"1a9r58dVyi\",\n    \"ShipperName\": null,\n    \"ISBN\": \"052336608-6\"\n}\n",
+      "form": []
     },
     "tests": []
   },
@@ -664,11 +644,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/ GET VALID",
-    "url": "localhost:8001/a/listings/913801521-8",
+    "url": "localhost:8001/a/listings/344589391-8",
     "method": "GET",
     "sortNum": 30000,
     "created": "2023-04-16T00:02:01.661Z",
-    "modified": "2023-04-16T01:28:48.042Z",
+    "modified": "2023-04-16T19:38:45.755Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -678,34 +658,37 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/ PUT INVALID",
-    "url": "localhost:8001/a/Listings/v3rIdX78u0",
+    "url": "localhost:8001/a/listings/put/awfaw",
     "method": "PUT",
     "sortNum": 60000,
     "created": "2023-04-16T00:12:04.755Z",
-    "modified": "2023-04-16T01:35:17.312Z",
+    "modified": "2023-04-16T20:23:14.245Z",
     "headers": [],
     "params": [],
-    "tests": [
-      {
-        "type": "res-code",
-        "custom": "",
-        "action": "equal",
-        "value": "405"
-      }
-    ]
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"ListingId\": \"\",\n    \"Quantity\": 1294,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"978-3-16-148410-0\"\n}\n",
+      "form": []
+    },
+    "tests": []
   },
   {
     "_id": "bfd778f4-ace4-4326-910e-4ec301f0169d",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/ PUT VALID",
-    "url": "localhost:8001/a/Listings/v3rIdX78u0",
+    "url": "localhost:8001/a/listings/put/u0baj954xr",
     "method": "PUT",
     "sortNum": 70000,
     "created": "2023-04-16T00:12:11.218Z",
-    "modified": "2023-04-16T19:14:29.682Z",
+    "modified": "2023-04-16T22:49:50.563Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"ListingId\": \"z1X3W37W19\",\n    \"Quantity\": 7,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"177jDql1r9\",\n    \"ShipperName\": \"Fedex\",\n    \"ISBN\": \"901660421-9\"\n}\n",
+      "form": []
+    },
     "tests": []
   },
   {
@@ -1014,6 +997,520 @@
         "custom": "",
         "action": "equal",
         "value": "200"
+      }
+    ]
+  },
+  {
+    "_id": "0fac81eb-661c-4b7e-a99d-122dc1273ce2",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "url": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "method": "PUT",
+    "sortNum": 110000,
+    "created": "2023-04-16T00:59:18.549Z",
+    "modified": "2023-04-16T00:59:18.549Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"UserId\":\"0Mg864B288\",\n    \"ReviewId\": \"X8iY856L6P\",\n    \"Comment\":\"She returned it\",\n    \"ReviewDate\":\"2022-03-31 16:17:44\",\n    \"Rating\": 2\n    }",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "4b21d44f-d043-49bf-b7c8-e6ac8709c60a",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "localhost:8001/a/UserReviews/Gone/Bye",
+    "url": "localhost:8001/a/UserReviews/Gone/Bye",
+    "method": "DELETE",
+    "sortNum": 120000,
+    "created": "2023-04-16T00:59:25.338Z",
+    "modified": "2023-04-16T00:59:25.338Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "5509f3a2-ab70-4db4-9da8-a359e1472af2",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "url": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "method": "GET",
+    "sortNum": 130000,
+    "created": "2023-04-16T01:04:15.192Z",
+    "modified": "2023-04-16T01:04:15.192Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "af52b5e3-9d0a-4561-aaf6-fda0b9f5932a",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "localhost:8001/a/UserReviews/Sfx1Bq2478/oKWpul6343",
+    "url": "localhost:8001/a/UserReviews/Sfx1Bq2478/oKWpul6343",
+    "method": "DELETE",
+    "sortNum": 140000,
+    "created": "2023-04-16T01:04:56.071Z",
+    "modified": "2023-04-16T01:04:56.071Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "39937b8b-943b-4473-baf0-2e7dc5eb7d22",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "localhost:8001/a/UserReviews/Invalid",
+    "url": "localhost:8001/a/UserReviews/Invalid",
+    "method": "POST",
+    "sortNum": 150000,
+    "created": "2023-04-16T01:05:04.230Z",
+    "modified": "2023-04-16T01:05:04.230Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
+      }
+    ]
+  },
+  {
+    "_id": "d34290dd-4c46-40e7-aed3-b7bb5be66aa9",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "https://www.thunderclient.com/welcome",
+    "url": "https://www.thunderclient.com/welcome",
+    "method": "POST",
+    "sortNum": 160000,
+    "created": "2023-04-16T01:05:10.150Z",
+    "modified": "2023-04-16T01:05:10.150Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
+      }
+    ]
+  },
+  {
+    "_id": "c569afdb-b0c8-4271-9e45-739a9b7ce88a",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "localhost:8001/a/UserReviews/JSy8h8pTvE",
+    "url": "localhost:8001/a/UserReviews/JSy8h8pTvE",
+    "method": "POST",
+    "sortNum": 170000,
+    "created": "2023-04-16T01:05:19.637Z",
+    "modified": "2023-04-16T01:05:19.637Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Comment\": \"Stole a book\",\n  \"ReviewDate\":\"2023-03-06 03:55:19\",\n  \"Rating\": 1\n\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "0a20fad6-2c8b-4d3a-b836-fb5198487dd4",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "localhost:8001/a/UserReviews/Invalid",
+    "url": "localhost:8001/a/UserReviews/Invalid",
+    "method": "GET",
+    "sortNum": 180000,
+    "created": "2023-04-16T01:05:35.901Z",
+    "modified": "2023-04-16T01:05:35.901Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "[]"
+      }
+    ]
+  },
+  {
+    "_id": "bd5d60dd-765e-4ff6-b7fb-018681606eee",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "localhost:8001/a/UserReviews/jlfldfladljal/Invalid",
+    "url": "localhost:8001/a/UserReviews/jlfldfladljal/Invalid",
+    "method": "GET",
+    "sortNum": 190000,
+    "created": "2023-04-16T01:05:50.101Z",
+    "modified": "2023-04-16T01:05:50.101Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "[]"
+      }
+    ]
+  },
+  {
+    "_id": "28fbf1da-01be-4585-9472-118670bd92ac",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "localhost:8001/b/UserReviews/Sfx1Bq2478",
+    "url": "localhost:8001/a/UserReviews/Sfx1Bq2478/oKWpul6343",
+    "method": "GET",
+    "sortNum": 200000,
+    "created": "2023-04-16T01:06:00.203Z",
+    "modified": "2023-04-16T01:06:00.203Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"UserId\": \"Sfx1Bq2478\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ReviewId\": \"oKWpul6343\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ReviewDate\": \"Thu, 05 May 2022 11:51:18 GMT\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Rating\": 1"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"ReviewComment\": \"non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis\""
+      },
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      }
+    ]
+  },
+  {
+    "_id": "003f7436-d793-411d-8e10-476e50294362",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "localhost:8001/b/users/Sfx1Bq2478",
+    "url": "localhost:8001/a/UserReviews/734VF5c2kx",
+    "method": "GET",
+    "sortNum": 210000,
+    "created": "2023-04-16T01:06:08.753Z",
+    "modified": "2023-04-16T01:06:08.753Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"UserId\": \"734VF5c2kx\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"ReviewId\": \"7Hcv1XhY50\","
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"Rating\": 8"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"ReviewDate\": \"Fri, 26 Nov 2021 08:11:15 GMT\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"ReviewComment\": \"quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus\""
+      },
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      }
+    ]
+  },
+  {
+    "_id": "2190fdef-9b4a-4c4b-9bc8-37fd1bf39e27",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/employees - GET valid",
+    "url": "localhost:8001/a/employees",
+    "method": "GET",
+    "sortNum": 220000,
+    "created": "2023-04-16T22:52:02.581Z",
+    "modified": "2023-04-16T22:52:02.581Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"EmployeeId\": \"06S884Ech3\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"FirstName\": \"Etti\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"LastName\": \"Beardmore\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"EmployeeId\": \"0Eo21P4QQ4\""
+      }
+    ]
+  },
+  {
+    "_id": "79095ed5-cc61-49b5-aed5-809d0db26153",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings/ PUT VALID",
+    "url": "localhost:8001/a/listings/",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2023-04-15T23:53:10.458Z",
+    "modified": "2023-04-16T01:28:50.801Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formencoded",
+      "raw": "",
+      "form": [
+        {
+          "name": "listing_id",
+          "value": "123"
+        },
+        {
+          "name": "quantity",
+          "value": "7"
+        },
+        {
+          "name": "price",
+          "value": "9.99"
+        },
+        {
+          "name": "employee_id",
+          "value": "123xyz"
+        },
+        {
+          "name": "shipper_name",
+          "value": "FEDX"
+        },
+        {
+          "name": "isbn",
+          "value": "123456-9"
+        }
+      ]
+    },
+    "tests": []
+  },
+
+  {
+    "_id": "bfd778f4-ace4-4326-910e-4ec301f0169d",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings/ PUT VALID",
+    "url": "localhost:8001/a/Listings/v3rIdX78u0",
+    "method": "PUT",
+    "sortNum": 70000,
+    "created": "2023-04-16T00:12:11.218Z",
+    "modified": "2023-04-16T19:14:29.682Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+{
+    "_id": "152c0b0a-9997-4533-9cb6-3ef874ff3f55",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "UserReviews Put Invalid",
+    "url": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "method": "PUT",
+    "sortNum": 10000,
+    "created": "2023-04-16T00:53:59.741Z",
+    "modified": "2023-04-16T22:52:23.035Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"UserId\":\"0Mg864B288\",\n  \"ReviewId\": \"X8iY856L6P\",\n  \"ReviewComment\": \"Nvevermind a book\",\n  \"ReviewDate\":\"2023-03-07 03:55:19\",\n  \"Rating\": 2\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+{
+    "_id": "e14ad3a5-c331-4895-948f-b11349ed3ba8",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings/delete/ DELETE VALID",
+    "url": "localhost:8001/a/Listings/v3rIdX78u0",
+    "method": "DELETE",
+    "sortNum": 80000,
+    "created": "2023-04-15T22:31:26.693Z",
+    "modified": "2023-04-16T19:24:05.396Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "9701ad48-10d0-462b-8e8b-c31e82ccaef3",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings/delete/ DELETE INVALID",
+    "url": "localhost:8001/a/Listings/oogabooga",
+    "method": "DELETE",
+    "sortNum": 90000,
+    "created": "2023-04-15T22:34:35.555Z",
+    "modified": "2023-04-16T19:24:48.059Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
       }
     ]
   }
