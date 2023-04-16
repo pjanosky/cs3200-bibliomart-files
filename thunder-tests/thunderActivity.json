@@ -1,14 +1,223 @@
 [
   {
-    "_id": "342ddfca-9fe8-4f3d-8524-1f20299320ee",
+    "_id": "ee59dd82-7dda-4424-9055-8b2f9e34d8d0",
     "colId": "history",
     "containerId": "",
-    "name": "b/textbooks/{isbn} GET valid",
-    "url": "localhost:8001/b/textbooks/not-valid-isbn",
+    "name": "localhost:8001/b/users/Sfx1Bq2478",
+    "url": "localhost:8001/a/UserReviews/734VF5c2kx",
     "method": "GET",
     "sortNum": 0,
-    "created": "2023-04-13T03:45:28.337Z",
-    "modified": "2023-04-13T03:53:55.831Z",
+    "created": "2023-04-15T21:19:09.669Z",
+    "modified": "2023-04-15T23:45:33.240Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"UserId\": \"734VF5c2kx\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"ReviewId\": \"7Hcv1XhY50\","
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"Rating\": 8"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"ReviewDate\": \"Fri, 26 Nov 2021 08:11:15 GMT\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"ReviewComment\": \"quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus\""
+      },
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      }
+    ]
+  },
+  {
+    "_id": "4171a356-6088-44ec-9349-f8f2c104701f",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/b/UserReviews/Sfx1Bq2478",
+    "url": "localhost:8001/a/UserReviews/Sfx1Bq2478/oKWpul6343",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-15T21:27:57.890Z",
+    "modified": "2023-04-15T23:45:48.209Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"UserId\": \"Sfx1Bq2478\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ReviewId\": \"oKWpul6343\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ReviewDate\": \"Thu, 05 May 2022 11:51:18 GMT\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Rating\": 1"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"ReviewComment\": \"non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis\""
+      },
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      }
+    ]
+  },
+  {
+    "_id": "a9d1d508-d085-4545-857d-501fc01d7f11",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/UserReviews/jlfldfladljal/Invalid",
+    "url": "localhost:8001/a/UserReviews/jlfldfladljal/Invalid",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-15T23:48:22.712Z",
+    "modified": "2023-04-15T23:48:42.409Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "[]"
+      }
+    ]
+  },
+  {
+    "_id": "41514cab-9d11-426a-8bc0-735218c1dd62",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/UserReviews/Invalid",
+    "url": "localhost:8001/a/UserReviews/Invalid",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-15T23:50:19.852Z",
+    "modified": "2023-04-15T23:50:19.852Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "equal",
+        "value": "[]"
+      }
+    ]
+  },
+  {
+    "_id": "5454b509-20b4-4a9c-aa7d-8902b99a305b",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/UserReviews/JSy8h8pTvE",
+    "url": "localhost:8001/a/UserReviews/JSy8h8pTvE",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-16T00:07:48.029Z",
+    "modified": "2023-04-16T00:07:48.029Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Comment\": \"Stole a book\",\n  \"ReviewDate\":\"2023-03-06 03:55:19\",\n  \"Rating\": 1\n\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "f7eb2b07-4d9a-4c43-ad8e-93c79ebb00da",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/UserReviews/Invalid",
+    "url": "localhost:8001/a/UserReviews/Invalid",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-16T00:13:00.105Z",
+    "modified": "2023-04-16T00:13:00.105Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
+      }
+    ]
+  },
+  {
+    "_id": "28f40101-92a8-46dc-9b9e-060e0937d132",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/UserReviews/Sfx1Bq2478/oKWpul6343",
+    "url": "localhost:8001/a/UserReviews/Sfx1Bq2478/oKWpul6343",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-16T00:15:21.310Z",
+    "modified": "2023-04-16T00:15:21.310Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -22,44 +231,20 @@
         "type": "res-body",
         "custom": "",
         "action": "contains",
-        "value": "\"Authors\": \"Sayers Pearcey, Binni Deavin\""
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "contains",
-        "value": "\"Edition\": 4"
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "contains",
-        "value": "\"ISBN\": \"951983070-7\""
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "contains",
-        "value": "\"Title\": \"phasellus sit amet erat\""
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "contains",
-        "value": " \"YearPublished\": 2012"
+        "value": "Success"
       }
     ]
   },
   {
-    "_id": "faf46ea3-ff34-4975-8bdd-fb7440bf1fe6",
+    "_id": "0872c7a5-a073-49c8-8c3d-fa258aea1b6a",
     "colId": "history",
     "containerId": "",
-    "name": "b/textbooks/{isbn} GET invalid",
-    "url": "localhost:8001/b/textbooks/invalid-isbn",
-    "method": "GET",
+    "name": "localhost:8001/a/UserReviews/Gone/Bye",
+    "url": "localhost:8001/a/UserReviews/Gone/Bye",
+    "method": "DELETE",
     "sortNum": 0,
-    "created": "2023-04-13T03:45:28.337Z",
-    "modified": "2023-04-13T03:55:16.501Z",
+    "created": "2023-04-16T00:15:51.148Z",
+    "modified": "2023-04-16T00:22:43.763Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -67,7 +252,54 @@
         "type": "res-code",
         "custom": "",
         "action": "equal",
-        "value": "400"
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "73edd538-5924-4d1d-8d9e-465b9387fcfe",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "url": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-16T00:17:45.050Z",
+    "modified": "2023-04-16T00:17:45.050Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "338cd7af-f8a3-425b-b047-16766f5a922f",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "url": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-16T00:19:08.120Z",
+    "modified": "2023-04-16T01:14:27.886Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
       }
     ]
   }
