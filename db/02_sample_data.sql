@@ -486,6 +486,11 @@ INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALU
 INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('52n8q0g3X8','Stu','Penrice',862032006,'Actuary',91188);
 INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('Ld55fA1mv9','Melvin','Wainscot',065628611,'Quality Control Specialist',118024);
 INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('77hSBP94Ki','Stefania','Bunce',988085303,'Senior Quality Engineer',103756);
+INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('06S884Ech3','Etti','Beardmore',452864368,'Graphic Designer',87447);
+INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('71vaiOg978','Magdalen','Goodson',457372000,'Administrative Assistant I',82293);
+INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('x3yg8397V1','Mariquilla','Mottershead',765217932,'Technical Writer',103774);
+INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('9dHEyM3ta0','Maurita','Attril',121883695,'Product Engineer',67325);
+INSERT INTO Employees(EmployeeId,FirstName,LastName,SSN,Title,YearlySalary) VALUES ('7m4RkkB2R1','Nat','Petriello',717562519,'Actuary',96356);
 
 
 -- Shippers
