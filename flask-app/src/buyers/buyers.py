@@ -305,3 +305,25 @@ def delete_purchase_info(UserId, ListingId):
     
     return "Success"
 
+# /listings/{listingId} - GET
+# Gets listing with the given listing ID
+@buyers.route('/purchases/<userId>/<listingId>', methods=['GET'])
+def get_purchase_info(userId, listingId):
+    query = f'''SELECT OrderNumber, Street, City, State, Zip, PurchaseDate, PurchaseQuantity
+    FROM PurchaseInfo
+    WHERE UserId = '{userId}' AND ListingId = '{listingId}';'''
+
+    current_app.logger.info(query)
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    
+    row_headers = [x[0] for x in cursor.description]
+    the_data = cursor.fetchall()
+    if len(the_data) != 1:
+        return make_response(f'invalid purhcase (listing id: {listingId}, user id: ${userId})', 400)
+    json_data = dict(zip(row_headers, the_data[0]))
+    
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
