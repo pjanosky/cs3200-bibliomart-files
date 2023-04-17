@@ -137,15 +137,19 @@ def get_users():
 
 
 
-# /authors/{id} - GET
-# Returns details on the author and other book they wrote
-@buyers.route('/authors/<AuthorID>', methods=['GET'])
-def get_author(AuthorID):
-    query = f'''SELECT A.AuthorID, FirstName, LastName, AD.ISBN, T.Title 
-    FROM Authors A
-            JOIN AuthorDetails AD ON A.AuthorID = AD.AuthorId
-            JOIN  Textbooks T on AD.ISBN = T.ISBN
-    WHERE A.AuthorID = '{AuthorID}';'''
+# /authors?isbn={isbn} - GET
+# Returns details on each author the a given isbn
+@buyers.route('/authors', methods=['GET'])
+def get_author():
+    conditions = ['True']
+    isbn = request.args.get('isbn')
+    if isbn is not None:
+        conditions.append(f"T.ISBN = '{isbn}'")
+
+    query = f"""SELECT FirstName, LastName, Bio FROM Authors
+    JOIN AuthorDetails AD on Authors.AuthorId = AD.AuthorId
+    JOIN Textbooks T on AD.ISBN = T.ISBN
+    WHERE {' AND '.join(conditions)};"""
 
     current_app.logger.info(query)
     cursor = db.get_db().cursor()
@@ -153,9 +157,9 @@ def get_author(AuthorID):
     
     row_headers = [x[0] for x in cursor.description]
     the_data = cursor.fetchall()
-    if len(the_data) < 1:
-        return make_response(f'invalid Author ID: {AuthorID}', 400)
-    json_data = dict(zip(row_headers, the_data[0]))
+    json_data = []
+    for row in the_data:
+        json_data.append(dict(zip(row_headers, the_data[0])))
     
     the_response = make_response(jsonify(json_data))
     the_response.status_code = 200

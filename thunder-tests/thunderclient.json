@@ -676,25 +676,31 @@
     "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
     "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
     "name": "/b/authors/<id> GET INVALID",
-    "url": "localhost:8001/b/authors/300",
+    "url": "localhost:8001/b/authors?isbn=invalid",
     "method": "GET",
     "sortNum": 120000,
     "created": "2023-04-15T23:24:06.497Z",
-    "modified": "2023-04-17T00:06:03.359Z",
+    "modified": "2023-04-17T01:55:43.149Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "isbn",
+        "value": "invalid",
+        "isPath": false
+      }
+    ],
     "tests": [
       {
         "type": "res-code",
         "custom": "",
         "action": "equal",
-        "value": "400"
+        "value": "200"
       },
       {
         "type": "res-body",
         "custom": "",
-        "action": "contains",
-        "value": "invalid Author ID: 300"
+        "action": "equal",
+        "value": "[]"
       }
     ]
   },
@@ -724,13 +730,19 @@
     "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
     "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
     "name": "/b/authors/<id> GET VALID",
-    "url": "localhost:8001/b/authors/sH2O868225",
+    "url": "localhost:8001/b/authors?isbn=486038089-4",
     "method": "GET",
     "sortNum": 130000,
     "created": "2023-04-15T23:43:59.159Z",
-    "modified": "2023-04-16T23:57:58.226Z",
+    "modified": "2023-04-17T01:55:20.874Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "isbn",
+        "value": "486038089-4",
+        "isPath": false
+      }
+    ],
     "tests": [
       {
         "type": "res-code",
