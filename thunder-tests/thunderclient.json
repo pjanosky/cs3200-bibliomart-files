@@ -453,24 +453,128 @@
     "method": "GET",
     "sortNum": 110000,
     "created": "2023-04-15T21:40:20.074Z",
-    "modified": "2023-04-16T01:28:36.830Z",
+    "modified": "2023-04-17T00:05:46.688Z",
     "headers": [],
     "params": [],
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Label\": \"Sid Jovovic\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Value\": \"06r88wUYbw\""
+      }
+    ]
   },
   {
     "_id": "7d2002fd-a100-42a4-b813-0e00c3284b1b",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/textbooks GET valid",
+    "name": "/a/textbooks GET VALID",
     "url": "localhost:8001/a/textbooks",
     "method": "GET",
     "sortNum": 10000,
     "created": "2023-04-15T21:43:52.112Z",
-    "modified": "2023-04-16T01:28:44.951Z",
+    "modified": "2023-04-16T23:54:19.230Z",
     "headers": [],
     "params": [],
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"BookCondition\": \"terrible\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"BookFormat\": \"paperback\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"BookSubject\": \"anthropology\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Edition\": 4"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"EmployeeId\": \"j0H7C05572\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ISBN\": \"041913716-5\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ListingId\": \"0ExU13ynH3\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Price\": 89.07"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Quantity\": 33"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ShipperName\": \"UPS\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Summary\": \"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\\r\\n\\r\\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\\r\\n\\r\\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Title\": \"in quam fringilla\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"YearPublished\": 2005"
+      }
+    ]
   },
   {
     "_id": "260077af-1f23-465d-8c57-b938454b0b4b",
@@ -481,7 +585,7 @@
     "method": "POST",
     "sortNum": 40000,
     "created": "2023-04-15T22:26:02.695Z",
-    "modified": "2023-04-16T20:12:06.036Z",
+    "modified": "2023-04-17T00:02:03.666Z",
     "headers": [],
     "params": [],
     "body": {
@@ -489,7 +593,20 @@
       "raw": "{\n    \"ListingId\": \"\",\n    \"Quantity\": \"5\",\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"719980671-X\"\n}\n",
       "form": []
     },
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "500"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "(1062, \"Duplicate entry '719980671-X' for key 'Listings.ISBN'\")"
+      }
+    ]
   },
   {
     "_id": "e14ad3a5-c331-4895-948f-b11349ed3ba8",
@@ -554,7 +671,7 @@
     "method": "DELETE",
     "sortNum": 90000,
     "created": "2023-04-15T22:34:35.555Z",
-    "modified": "2023-04-16T23:16:12.781Z",
+    "modified": "2023-04-17T00:04:53.545Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -562,7 +679,13 @@
         "type": "res-code",
         "custom": "",
         "action": "equal",
-        "value": "400"
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"message\": \"Failed to delete listing 8\""
       }
     ]
   },
@@ -631,14 +754,27 @@
     "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
     "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
     "name": "/b/authors/<id> GET INVALID",
-    "url": "localhost:8001/b/authors/3",
+    "url": "localhost:8001/b/authors/300",
     "method": "GET",
     "sortNum": 120000,
     "created": "2023-04-15T23:24:06.497Z",
-    "modified": "2023-04-16T01:28:38.379Z",
+    "modified": "2023-04-17T00:06:03.359Z",
     "headers": [],
     "params": [],
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "invalid Author ID: 300"
+      }
+    ]
   },
   {
     "_id": "bce36f41-49a2-40c6-8c15-9c45c4740e2e",
@@ -649,10 +785,23 @@
     "method": "GET",
     "sortNum": 20000,
     "created": "2023-04-15T23:38:21.672Z",
-    "modified": "2023-04-16T19:38:42.019Z",
+    "modified": "2023-04-17T00:06:52.559Z",
     "headers": [],
     "params": [],
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "404"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"error\": \"No listings found for this ISBN.\""
+      }
+    ]
   },
   {
     "_id": "0f887f63-27aa-4b14-8e6d-3002f0efebce",
@@ -663,73 +812,47 @@
     "method": "GET",
     "sortNum": 130000,
     "created": "2023-04-15T23:43:59.159Z",
-    "modified": "2023-04-16T19:20:58.916Z",
+    "modified": "2023-04-16T23:57:58.226Z",
     "headers": [],
     "params": [],
-    "tests": []
-  },
-  {
-    "_id": "79095ed5-cc61-49b5-aed5-809d0db26153",
-    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
-    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/listings/ POST VALID",
-    "url": "localhost:8001/a/listings/",
-    "method": "POST",
-    "sortNum": 50000,
-    "created": "2023-04-15T23:53:10.458Z",
-    "modified": "2023-04-16T22:48:30.006Z",
-    "headers": [],
-    "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n    \"ListingId\": \"654321\",\n    \"Quantity\": 5,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"1a9r58dVyi\",\n    \"ShipperName\": null,\n    \"ISBN\": \"052336608-6\"\n}\n",
-      "form": []
-    },
-    "tests": []
-  },
-  {
-    "_id": "79095ed5-cc61-49b5-aed5-809d0db26153",
-    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
-    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/listings/ PUT VALID",
-    "url": "localhost:8001/a/listings/",
-    "method": "POST",
-    "sortNum": 50000,
-    "created": "2023-04-15T23:53:10.458Z",
-    "modified": "2023-04-16T01:28:50.801Z",
-    "headers": [],
-    "params": [],
-    "body": {
-      "type": "formencoded",
-      "raw": "",
-      "form": [
-        {
-          "name": "listing_id",
-          "value": "123"
-        },
-        {
-          "name": "quantity",
-          "value": "7"
-        },
-        {
-          "name": "price",
-          "value": "9.99"
-        },
-        {
-          "name": "employee_id",
-          "value": "123xyz"
-        },
-        {
-          "name": "shipper_name",
-          "value": "FEDX"
-        },
-        {
-          "name": "isbn",
-          "value": "123456-9"
-        }
-      ]
-    },
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"AuthorID\": \"sH2O868225\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"FirstName\": \"Colby\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ISBN\": \"152537447-8\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"LastName\": \"Gapper\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Title\": \"ipsum dolor\""
+      }
+    ]
   },
   {
     "_id": "c9c87c85-b266-4597-8eed-46af28503c2c",
@@ -740,10 +863,53 @@
     "method": "GET",
     "sortNum": 15000,
     "created": "2023-04-16T00:02:01.661Z",
-    "modified": "2023-04-16T23:15:28.671Z",
+    "modified": "2023-04-16T23:59:34.794Z",
     "headers": [],
     "params": [],
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"EmployeeId\": \"0Eo21P4QQ4\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ISBN\": \"344589391-8\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ListingId\": \"v3rIdX78u0\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Price\": 65.27"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Quantity\": 213"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ShipperName\": \"UPS\""
+      }
+    ]
   },
   {
     "_id": "85b74762-f839-4f08-95c5-51cba8635b14",
@@ -754,7 +920,7 @@
     "method": "PUT",
     "sortNum": 60000,
     "created": "2023-04-16T00:12:04.755Z",
-    "modified": "2023-04-16T23:15:41.627Z",
+    "modified": "2023-04-17T00:02:50.147Z",
     "headers": [],
     "params": [],
     "body": {
@@ -762,40 +928,20 @@
       "raw": "{\n    \"ListingId\": \"\",\n    \"Quantity\": 1294,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"978-3-16-148410-0\"\n}\n",
       "form": []
     },
-    "tests": []
-  },
-  {
-    "_id": "bfd778f4-ace4-4326-910e-4ec301f0169d",
-    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
-    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/listings/ PUT VALID",
-    "url": "localhost:8001/a/listings/u0baj954xr",
-    "method": "PUT",
-    "sortNum": 70000,
-    "created": "2023-04-16T00:12:11.218Z",
-    "modified": "2023-04-16T23:15:59.685Z",
-    "headers": [],
-    "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n    \"ListingId\": \"z1X3W37W19\",\n    \"Quantity\": 7,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"177jDql1r9\",\n    \"ShipperName\": \"Fedex\",\n    \"ISBN\": \"901660421-9\"\n}\n",
-      "form": []
-    },
-    "tests": []
-  },
-  {
-    "_id": "bfd778f4-ace4-4326-910e-4ec301f0169d",
-    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
-    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/listings/ PUT VALID",
-    "url": "localhost:8001/a/Listings/v3rIdX78u0",
-    "method": "PUT",
-    "sortNum": 70000,
-    "created": "2023-04-16T00:12:11.218Z",
-    "modified": "2023-04-16T19:14:29.682Z",
-    "headers": [],
-    "params": [],
-    "tests": []
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "404"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": " \"message\": \"Listing awfaw not found\""
+      }
+    ]
   },
   {
     "_id": "152c0b0a-9997-4533-9cb6-3ef874ff3f55",
@@ -1477,7 +1623,7 @@
     "method": "GET",
     "sortNum": 220000,
     "created": "2023-04-16T22:52:02.581Z",
-    "modified": "2023-04-16T23:28:13.431Z",
+    "modified": "2023-04-16T22:52:02.581Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -1491,25 +1637,25 @@
         "type": "res-body",
         "custom": "",
         "action": "contains",
-        "value": "\"Label\": \"Halimeda Hutten\","
+        "value": "\"EmployeeId\": \"06S884Ech3\""
       },
       {
         "type": "res-body",
         "custom": "",
         "action": "contains",
-        "value": "\"Value\": \"09fA4Xoo17\""
+        "value": "\"FirstName\": \"Etti\""
       },
       {
         "type": "res-body",
         "custom": "",
         "action": "contains",
-        "value": "\"Value\": \"0Eo21P4QQ4\""
+        "value": "\"LastName\": \"Beardmore\""
       },
       {
         "type": "res-body",
         "custom": "",
         "action": "contains",
-        "value": " \"Value\": \"177jDql1r9\""
+        "value": "\"EmployeeId\": \"0Eo21P4QQ4\""
       }
     ]
   }
