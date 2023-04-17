@@ -506,11 +506,11 @@
     "colId": "history",
     "containerId": "",
     "name": "localhost:8001/a/Users/VwtVwk0TZz",
-    "url": "localhost:8001/a/Users/VwtVwk0TZz",
+    "url": "localhost:8001/a/Users/nnff",
     "method": "GET",
     "sortNum": 0,
     "created": "2023-04-16T23:42:57.297Z",
-    "modified": "2023-04-16T23:42:57.297Z",
+    "modified": "2023-04-17T00:24:54.690Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -542,5 +542,212 @@
         "value": "200"
       }
     ]
+  },
+  {
+    "_id": "252f2d99-8e79-43d9-9407-fdf31276da11",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/b/purchases/X30diX987R",
+    "url": "localhost:8001/b/purchases/X30diX987R",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-17T00:08:56.102Z",
+    "modified": "2023-04-17T00:09:12.611Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "8d5059ef-f5ce-44ad-84ce-9c8da5e259a3",
+    "colId": "history",
+    "containerId": "",
+    "name": "Valid Update a Purchase",
+    "url": "localhost:8001/b/purchases/JSy8h8pTvE/S9477d61B5",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-17T00:10:29.394Z",
+    "modified": "2023-04-17T00:10:29.394Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"user_id\": \"JSy8h8pTvE\",\n  \"listing_id\": \"S9477d61B5\",\n  \"street\": \"90 Huntington Ave\",\n  \"city\": \"Boston\",\n  \"state\": \"MA\",\n  \"zip\": \"02115\",\n  \"quantity\": 1\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "5e45477c-5c6c-4749-85fa-ea3bac5eeb5e",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/b/purchases/X30diX987R/",
+    "url": "localhost:8001/b/purchases/X30diX987R/",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-17T00:10:52.020Z",
+    "modified": "2023-04-17T00:10:52.020Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Contain"
+      }
+    ]
+  },
+  {
+    "_id": "ccd47a58-919c-450e-bb1e-327fa44afb16",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/b/purchases/X30diX987R/S9477d61B5",
+    "url": "localhost:8001/b/purchases/X30diX987R/S9477d61B5",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-17T00:11:12.259Z",
+    "modified": "2023-04-17T00:11:12.259Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "f7c54a2d-c190-4ce2-879f-114450961ece",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/b/purchaseinfo/JSy8h8pTvE/S9477d61B5",
+    "url": "localhost:8001/b/purchaseinfo/JSy8h8pTvE/S9477d61B5",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-17T00:14:11.426Z",
+    "modified": "2023-04-17T00:14:11.426Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"user_id\": \"JSy8h8pTvE\",\n  \"listing_id\": \"S9477d61B5\",\n  \"street\": \"90 Huntington Ave\",\n  \"city\": \"Boston\",\n  \"state\": \"MA\",\n  \"zip\": \"02115\",\n  \"quantity\": 1\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "61d86815-1aec-4d4b-9ae7-cf6c3d2e9a96",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/b/purchaseinfo/X30diX987R/S9477d61B5",
+    "url": "localhost:8001/b/purchaseinfo/X30diX987R/S9477d61B5",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-17T00:14:14.412Z",
+    "modified": "2023-04-17T00:14:14.412Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "ae4fbffe-fb20-47ec-a3aa-0d2f45be902a",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/b/purchases/JSy8hnkfkjd8pTvE/S9477d61B5",
+    "url": "localhost:8001/b/purchases/JSy8hnkfkjd8pTvE/S9477d61B5",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-17T00:23:55.730Z",
+    "modified": "2023-04-17T00:23:55.730Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
+      }
+    ]
+  },
+  {
+    "_id": "3c2c8565-1ad0-42cb-b03d-56a5fb1c0620",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/b/purchaseinfo/X30diX987R/S9461B5",
+    "url": "localhost:8001/b/purchaseinfo/X30diX987R/S9461B5",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-17T00:24:16.553Z",
+    "modified": "2023-04-17T00:24:16.553Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

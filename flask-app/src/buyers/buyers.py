@@ -254,12 +254,40 @@ def get_listing(listing_id):
 
 # /purchases/{UserId}/{ListingId} - PUT
 # Changes destination of purchase
+@buyers.route('/purchases/<UserId>/<ListingId>', methods=['PUT'])
+def update_UserReviews(UserId, ListingId):
+    req_data = request.json
+    street = req_data['street']
+    city = req_data['city']
+    state = req_data['state']
+    zip = req_data['zip']
+    
+    cursor = db.get_db().cursor()
+    query = f"UPDATE PurchaseInfo SET Street = '{street}', City = '{city}', State = '{state}', Zip = '{zip}' WHERE UserId = '{UserId}' AND  ListingId = '{ListingId}' "
+    current_app.logger.info(query)
+    try: 
+        cursor.execute(query)
+        db.get_db().commit()
+    except IntegrityError as e:
+        return make_response(str(e), 400)
 
-
-
+    return "Success"
 
 # /purchases/{UserId}/{ListingId} - DELETE
 # Cancels a purchase order by deleting it from the database
 
+@buyers.route('/purchaseinfo/<UserId>/<ListingId>', methods = ['DELETE'])
+def delete_UserReviews(UserId, ListingId):
+    cursor = db.get_db().cursor()
+    query = f"DELETE FROM PurchaseInfo WHERE UserId = '{UserId}' and ListingId = '{ListingId}'"
+    current_app.logger.info(query)
+    cursor.execute(query)
 
+    try: 
+        cursor.execute(query)
+        db.get_db().commit()
+    except IntegrityError as e:
+        return make_response(str(e), 400)
+    
+    return "Success"
 

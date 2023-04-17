@@ -814,6 +814,20 @@
   {
     "_id": "152c0b0a-9997-4533-9cb6-3ef874ff3f55",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings/ PUT VALID",
+    "url": "localhost:8001/a/Listings/v3rIdX78u0",
+    "method": "PUT",
+    "sortNum": 70000,
+    "created": "2023-04-16T00:12:11.218Z",
+    "modified": "2023-04-16T19:14:29.682Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "152c0b0a-9997-4533-9cb6-3ef874ff3f55",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
     "name": "UserReviews Put Invalid",
     "url": "localhost:8001/a/UserReviews/0Mg864B288/X8iY856L6P",
@@ -842,20 +856,6 @@
         "value": "Success"
       }
     ]
-  },
-  {
-    "_id": "152c0b0a-9997-4533-9cb6-3ef874ff3f55",
-    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
-    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/listings/ PUT VALID",
-    "url": "localhost:8001/a/Listings/v3rIdX78u0",
-    "method": "PUT",
-    "sortNum": 70000,
-    "created": "2023-04-16T00:12:11.218Z",
-    "modified": "2023-04-16T19:14:29.682Z",
-    "headers": [],
-    "params": [],
-    "tests": []
   },
   {
     "_id": "f584e4cd-683e-4973-a670-a74850a9932a",
@@ -1215,6 +1215,86 @@
         "custom": "",
         "action": "contains",
         "value": "\"EmployeeId\": \"0Eo21P4QQ4\""
+      }
+    ]
+  },
+  {
+    "_id": "45833f75-4c61-496d-b764-9331e477e876",
+    "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
+    "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
+    "name": "Delete a Purchase",
+    "url": "localhost:8001/b/purchaseinfo/X30diX987R/S9477d61B5",
+    "method": "DELETE",
+    "sortNum": 140000,
+    "created": "2023-04-17T00:15:51.715Z",
+    "modified": "2023-04-17T00:15:51.715Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "850925db-0db0-4ca1-8f50-fe745423e9f1",
+    "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
+    "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
+    "name": "Valid Update a Purchase",
+    "url": "localhost:8001/b/purchases/JSy8h8pTvE/S9477d61B5",
+    "method": "PUT",
+    "sortNum": 150000,
+    "created": "2023-04-17T00:21:34.830Z",
+    "modified": "2023-04-17T00:21:34.830Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"user_id\": \"JSy8h8pTvE\",\n  \"listing_id\": \"S9477d61B5\",\n  \"street\": \"90 Huntington Ave\",\n  \"city\": \"Boston\",\n  \"state\": \"MA\",\n  \"zip\": \"02115\",\n  \"quantity\": 1\n}",
+      "form": []
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "5cf331fd-a12b-4113-8fc8-2a95e68e6606",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
+    "name": "Valid Users/ Get",
+    "url": "localhost:8001/a/Users",
+    "method": "GET",
+    "sortNum": 230000,
+    "created": "2023-04-17T00:22:32.773Z",
+    "modified": "2023-04-17T00:22:32.773Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
       }
     ]
   }

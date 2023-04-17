@@ -255,7 +255,6 @@ def update_UserReviews(UserId, ReviewId):
     
     cursor = db.get_db().cursor()
     query = f"UPDATE UserReviews SET ReviewComment = '{ReviewComment}', ReviewDate = '{ReviewDate}', Rating = '{Rating}' WHERE UserId = '{UserId}' AND  ReviewId = '{ReviewId}' "
-    # Comment = %s, ReviewDate = %s, Rating = %s, WHERE UserId = %s AND ReviewId = %s", (Comment, ReviewDate, Rating, UserId, ReviewId)
     current_app.logger.info(query)
     
     try: 
@@ -278,6 +277,11 @@ def get_users():
 
     current_app.logger.info(query)
     cursor.execute(query)
+    try: 
+        cursor.execute(query)
+        db.get_db().commit()
+    except IntegrityError as e:
+        return make_response(str(e), 400)
 
     row_heaader = [x[0] for x in cursor.description]
     JSON_DATA = []
@@ -302,6 +306,11 @@ def get_employees():
     current_app.logger.info(query)
     cursor = db.get_db().cursor()
     cursor.execute(query)
+    try: 
+        cursor.execute(query)
+        db.get_db().commit()
+    except IntegrityError as e:
+        return make_response(str(e), 400)
     
     row_headers = [x[0] for x in cursor.description]
     the_data = cursor.fetchall()
