@@ -143,21 +143,20 @@ def edit_listing(listingId):
 
 # /listings/{listingId} - DELETE
 # Removes a given listing
-@administrators.route('/listings/<listingId>', methods=['DELETE'])
-def delete_listing(listingId):
+@administrators.route('/Listings/<ListingId>', methods=['DELETE'])
+def delete_listing(ListingId):
     cursor = db.get_db().cursor()
-    cursor.execute("DELETE FROM Listings WHERE ListingId = %s", (listingId,))
-    rows_deleted = cursor.rowcount
+    query = f"DELETE FROM Listings WHERE ListingId = '{ListingId}'"
+    current_app.logger.info(query)
+    cursor.execute(query)
 
-    db.get_db().commit()
-    cursor.close()
-    db.get_db().close()
-
-    if rows_deleted == 0:
-        return jsonify({"message": f"Failed to delete listing {listingId}"})
-    else:
-        return jsonify({"message": f"Listing {listingId} deleted successfully"})
-
+    try: 
+        cursor.execute(query)
+        db.get_db().commit()
+    except IntegrityError as e:
+        return make_response(str(e), 400)
+    
+    return "Success"
 
 # Reviews Edit Page
 # /reviews/{userid} - GET
@@ -272,7 +271,24 @@ def update_UserReviews(UserId, ReviewId):
 # /users - GET
 # Get a list of all users in the database
 
+@administrators.route('/Users', methods=['GET'])
+def get_users():
+    cursor = db.get_db().cursor()
+    query = f"SELECT UserId, FirstName, LastName FROM Users"
 
+    current_app.logger.info(query)
+    cursor.execute(query)
+
+    row_heaader = [x[0] for x in cursor.description]
+    JSON_DATA = []
+    theData = cursor.fetchall()
+    for row in theData:
+        JSON_DATA.append(dict(zip(row_heaader, row)))
+        
+    the_resposne = make_response(jsonify(JSON_DATA))
+    the_resposne.status_code = 200
+    the_resposne.mimetype = 'application/json'
+    return the_resposne
 
 
 
