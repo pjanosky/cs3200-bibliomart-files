@@ -123,7 +123,7 @@ def get_listings():
 def get_users():
     cursor = db.get_db().cursor()
     cursor.execute(f'''SELECT CONCAT(FirstName, ' ', LastName) 
-            AS Label, UserId AS Value
+            AS label, UserId AS value
             FROM Users;''')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
