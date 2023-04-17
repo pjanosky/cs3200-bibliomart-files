@@ -2,31 +2,13 @@ import random
 from sqlite3 import IntegrityError
 import string
 from flask import Blueprint, request, jsonify, make_response, current_app 
-import json
 from src import db
 
 
 administrators = Blueprint('administrators', __name__)
 
-# This is an example route from the boilerplate project
-# Get all customers from the DB
-# @customers.route('/customers', methods=['GET'])
-# def get_customers():
-#     cursor = db.get_db().cursor()
-#     cursor.execute('select company, last_name,\
-#         first_name, job_title, business_phone from customers')
-#     row_headers = [x[0] for x in cursor.description]
-#     json_data = []
-#     theData = cursor.fetchall()
-#     for row in theData:
-#         json_data.append(dict(zip(row_headers, row)))
-#     the_response = make_response(jsonify(json_data))
-#     the_response.status_code = 200
-#     the_response.mimetype = 'application/json'
-#     return the_response
-
-
 # Listing Edit Page
+
 # /textbooks - GET
 # Get a list of textbooks and their associated listings
 @administrators.route('/textbooks', methods=['GET'])
@@ -36,8 +18,8 @@ def get_textbooks():
                     ON Textbooks.ISBN = Listings.ISBN;')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
-    txbks = cursor.fetchall()
-    for row in txbks:
+    rows = cursor.fetchall()
+    for row in rows:
          json_data.append(dict(zip(row_headers, row)))
     the_response = make_response(jsonify(json_data))
     the_response.status_code = 200
@@ -45,13 +27,13 @@ def get_textbooks():
     return the_response
 
 
-# /listings/{Title} - GET
+# /listings/{isbn} - GET
 # Gets listing with given isbn
-@administrators.route('/listings/<ISBN>', methods=['GET'])
-def get_listing(ISBN):
+@administrators.route('/listings/<isbn>', methods=['GET'])
+def get_listing(isbn):
     query = f'''SELECT * 
                 FROM Listings 
-                WHERE ISBN = '{ISBN}'; '''
+                WHERE ISBN = '{isbn}'; '''
     cursor = db.get_db().cursor()
     cursor.execute(query)
     row_headers = [x[0] for x in cursor.description]
@@ -159,51 +141,55 @@ def delete_listing(ListingId):
     return "Success"
 
 # Reviews Edit Page
-# /reviews/{userid} - GET
+
+# /reviews/{UserId} - GET
 #  Gets all reviews associated with a given user
 
 @administrators.route('/UserReviews/<UserId>', methods = ['GET'])
-def get_UserReviews(UserId):
+def get_user_review(UserId):
     cursor = db.get_db().cursor()
     query = f"select UserId, ReviewId, ReviewDate, Rating, ReviewComment from UserReviews WHERE UserId = '{UserId}'"
     current_app.logger.info(query)
     cursor.execute(query)
-    row_heaader = [x[0] for x in cursor.description]
+    row_header = [x[0] for x in cursor.description]
     JSON_DATA = []
     theData = cursor.fetchall()
     for row in theData:
-        JSON_DATA.append(dict(zip(row_heaader, row)))
-    the_resposne = make_response(jsonify(JSON_DATA))
-    the_resposne.status_code = 200
-    the_resposne.mimetype = 'UserReviews/json'
-    return the_resposne
+        JSON_DATA.append(dict(zip(row_header, row)))
+    the_response = make_response(jsonify(JSON_DATA))
+    the_response.status_code = 200
+    the_response.mimetype = 'UserReviews/json'
+    return the_response
 
 
 
-# /reviews/{userid}/{reviewID} - GET
+# /reviews/{UserId}/{ReviewId} - GET
 # Gets a selected review of the given user
 @administrators.route('/UserReviews/<UserId>/<ReviewId>', methods = ['GET'])
-def get_One_UserReview(UserId, ReviewId):
+def get_one_user_review(UserId, ReviewId):
     cursor = db.get_db().cursor()
-    query = f"select UserId, ReviewId, ReviewDate, Rating, ReviewComment from UserReviews WHERE UserId = '{UserId}' AND ReviewId = '{ReviewId}'"
+    query = f"""select UserId, ReviewId, ReviewDate, Rating, ReviewComment
+    FROM UserReviews 
+    WHERE UserId = '{UserId}' AND ReviewId = '{ReviewId}';"""
+
     current_app.logger.info(query)
     cursor.execute(query)
-    row_heaader = [x[0] for x in cursor.description]
+    row_header = [x[0] for x in cursor.description]
     JSON_DATA = []
     theData = cursor.fetchall()
     for row in theData:
-        JSON_DATA.append(dict(zip(row_heaader, row)))
-    the_resposne = make_response(jsonify(JSON_DATA))
-    the_resposne.status_code = 200
-    the_resposne.mimetype = 'UserReviews/json'
-    return the_resposne
+        JSON_DATA.append(dict(zip(row_header, row)))
+    the_response = make_response(jsonify(JSON_DATA))
+    the_response.status_code = 200
+    the_response.mimetype = 'UserReviews/json'
+    return the_response
 
 
 
-# /reviews/{userId}/{reviewID} -DELETE
+# /reviews/{userId}/{reviewID} - DELETE
 # Deletes a selected review
 @administrators.route('/UserReviews/<UserId>/<ReviewId>', methods = ['DELETE'])
-def delete_UserReviews(UserId, ReviewId):
+def delete_purchase_info(UserId, ReviewId):
     cursor = db.get_db().cursor()
     query = f"DELETE FROM UserReviews WHERE UserId = '{UserId}' and ReviewId = '{ReviewId}'"
     current_app.logger.info(query)
@@ -217,12 +203,11 @@ def delete_UserReviews(UserId, ReviewId):
     
     return "Success"
 
-# /reviews/{userid} - POST - DONE
+
+# /reviews/{UserId} - POST
 # Adds a new review for a given user
-
 @administrators.route('/UserReviews/<UserId>', methods = ['POST']) 
-def post_UserReviews(UserId):
-
+def add_user_review(UserId):
     req_data = request.json
     ReviewId = "".join(random.choice(string.ascii_letters + string.digits) for _ in range(10))
     comment = req_data['Comment']
@@ -243,11 +228,10 @@ def post_UserReviews(UserId):
 
 
 
-# /reviews/{userId}/{reviewID} -PUT - done
+# /reviews/{userId}/{reviewID} -PUT
 # Updates a selected review
-
 @administrators.route('/UserReviews/<UserId>/<ReviewId>', methods=['PUT'])
-def update_UserReviews(UserId, ReviewId):
+def update_purchase_info(UserId, ReviewId):
     
     req_data = request.json
     ReviewComment = req_data['ReviewComment']
@@ -270,7 +254,6 @@ def update_UserReviews(UserId, ReviewId):
 
 # /users - GET
 # Get a list of all users in the database
-
 @administrators.route('/Users', methods=['GET'])
 def get_users():
     cursor = db.get_db().cursor()
@@ -285,16 +268,16 @@ def get_users():
     except IntegrityError as e:
         return make_response(str(e), 400)
 
-    row_heaader = [x[0] for x in cursor.description]
+    row_header = [x[0] for x in cursor.description]
     JSON_DATA = []
     theData = cursor.fetchall()
     for row in theData:
-        JSON_DATA.append(dict(zip(row_heaader, row)))
+        JSON_DATA.append(dict(zip(row_header, row)))
         
-    the_resposne = make_response(jsonify(JSON_DATA))
-    the_resposne.status_code = 200
-    the_resposne.mimetype = 'application/json'
-    return the_resposne
+    the_response = make_response(jsonify(JSON_DATA))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
 
 
 

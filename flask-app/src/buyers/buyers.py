@@ -1,29 +1,9 @@
 from flask import Blueprint, request, jsonify, make_response, current_app
-import json
 from pymysql import IntegrityError
 from src import db
 
 
 buyers = Blueprint('buyers', __name__)
-
-# id = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(10))
-
-# This is an example route from the boilerplate project
-# Get all customers from the DB
-# @customers.route('/customers', methods=['GET'])
-# def get_customers():
-#     cursor = db.get_db().cursor()
-#     cursor.execute('select company, last_name,\
-#         first_name, job_title, business_phone from customers')
-#     row_headers = [x[0] for x in cursor.description]
-#     json_data = []
-#     theData = cursor.fetchall()
-#     for row in theData:
-#         json_data.append(dict(zip(row_headers, row)))
-#     the_response = make_response(jsonify(json_data))
-#     the_response.status_code = 200
-#     the_response.mimetype = 'application/json'
-#     return the_response
 
 
 # Textbooks Search Page
@@ -255,7 +235,7 @@ def get_listing(listing_id):
 # /purchases/{UserId}/{ListingId} - PUT
 # Changes destination of purchase
 @buyers.route('/purchases/<UserId>/<ListingId>', methods=['PUT'])
-def update_UserReviews(UserId, ListingId):
+def update_purchase_info(UserId, ListingId):
     req_data = request.json
     street = req_data['street']
     city = req_data['city']
@@ -277,7 +257,7 @@ def update_UserReviews(UserId, ListingId):
 # Cancels a purchase order by deleting it from the database
 
 @buyers.route('/purchaseinfo/<UserId>/<ListingId>', methods = ['DELETE'])
-def delete_UserReviews(UserId, ListingId):
+def delete_purchase_info(UserId, ListingId):
     cursor = db.get_db().cursor()
     query = f"DELETE FROM PurchaseInfo WHERE UserId = '{UserId}' and ListingId = '{ListingId}'"
     current_app.logger.info(query)
