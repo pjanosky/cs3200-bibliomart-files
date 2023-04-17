@@ -75,7 +75,7 @@ def get_listing(ISBN):
 @administrators.route('/listings/', methods=['POST'])
 def make_listing():
     data = request.json
-    listing_id = data['ListingId']
+    listing_id = "".join(random.choice(string.ascii_letters + string.digits) for _ in range(10))
     quantity = data['Quantity']
     price = data['Price']
     employee_id = data['EmployeeId']
