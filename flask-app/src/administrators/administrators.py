@@ -226,11 +226,12 @@ def post_UserReviews(UserId):
     req_data = request.json
     ReviewId = "".join(random.choice(string.ascii_letters + string.digits) for _ in range(10))
     comment = req_data['Comment']
-    ReviewDate = req_data['ReviewDate']
     Rating = req_data['Rating']
 
     cursor = db.get_db().cursor()
-    query = f"INSERT INTO UserReviews (UserId, ReviewId, ReviewComment, ReviewDate, Rating) VALUES ('{UserId}', '{ReviewId}', '{comment}', '{ReviewDate}', {Rating})"
+    query = f"""INSERT INTO UserReviews (UserId, ReviewId, ReviewComment, Rating) 
+    VALUES ('{UserId}', '{ReviewId}', '{comment}', {Rating})"""
+    
     current_app.logger.info(query)
 
     try: 
@@ -273,7 +274,8 @@ def update_UserReviews(UserId, ReviewId):
 @administrators.route('/Users', methods=['GET'])
 def get_users():
     cursor = db.get_db().cursor()
-    query = f"SELECT UserId, FirstName, LastName FROM Users"
+    query = f'''SELECT CONCAT(FirstName, ' ', LastName) as Label, UserId as Value
+    FROM Users;'''
 
     current_app.logger.info(query)
     cursor.execute(query)
