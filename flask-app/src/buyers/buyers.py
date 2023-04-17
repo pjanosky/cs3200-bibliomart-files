@@ -12,6 +12,36 @@ buyers = Blueprint('buyers', __name__)
 # Joins with the listing ID for that textbook (null if no listing)
 # author={name}
 # title={tile}
+@buyers.route('/textbooks/<isbn>', methods=['GET'])
+def get_textbook(isbn):
+    query = f'''SELECT T.ISBN, T.Title, T.Edition, T.YearPublished,
+    GROUP_CONCAT(Concat(A.FirstName, ' ', A.LastName) SEPARATOR ', ') as Authors
+    FROM Textbooks T
+    LEFT OUTER JOIN AuthorDetails AD on T.ISBN = AD.ISBN
+    LEFT OUTER JOIN Authors A on AD.AuthorId = A.AuthorId
+    WHERE T.ISBN = '{isbn}'
+    GROUP BY T.ISBN
+    LIMIT 1;'''
+
+    current_app.logger.info(query)
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    
+    row_headers = [x[0] for x in cursor.description]
+    the_data = cursor.fetchall()
+    if len(the_data) != 1:
+        return make_response(f'no textbook with isbn: {isbn}', 400)
+    json_data = dict(zip(row_headers, the_data[0]))
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+# Gets the textbooks matching 1 of three query parameters
+# Joins with the listing ID for that textbook (null if no listing)
+# author={name}
+# title={tile}
 @buyers.route('/textbooks', methods=['GET'])
 def get_textbooks():
     conditions = ['TRUE']

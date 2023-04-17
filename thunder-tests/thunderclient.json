@@ -1345,5 +1345,77 @@
         "value": "200"
       }
     ]
+  },
+  {
+    "_id": "63ebe8b7-3b1e-4f2c-be90-95bf6b92dcc8",
+    "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
+    "containerId": "f42c79e6-b0df-41e0-b2aa-a34afaeff29e",
+    "name": "b/textbooks/{isbn} GET valid",
+    "url": "localhost:8001/b/textbooks/951983070-7",
+    "method": "GET",
+    "sortNum": 160000,
+    "created": "2023-04-17T00:48:47.363Z",
+    "modified": "2023-04-17T00:48:47.363Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Authors\": \"Sayers Pearcey, Binni Deavin\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Edition\": 4"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ISBN\": \"951983070-7\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Title\": \"phasellus sit amet erat\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"YearPublished\": 2012"
+      }
+    ]
+  },
+  {
+    "_id": "b6893ed2-366f-45d0-a9ec-b0d52be30ab8",
+    "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
+    "containerId": "f42c79e6-b0df-41e0-b2aa-a34afaeff29e",
+    "name": "b/textbooks/{isbn} GET invalid",
+    "url": "localhost:8001/b/textbooks/invalid",
+    "method": "GET",
+    "sortNum": 170000,
+    "created": "2023-04-17T00:48:55.788Z",
+    "modified": "2023-04-17T00:49:12.725Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
+      }
+    ]
   }
 ]
