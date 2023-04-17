@@ -1429,5 +1429,95 @@
         "value": "400"
       }
     ]
+  },
+  {
+    "_id": "256eb61c-d48b-441d-99bb-3f06cb35c6f8",
+    "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
+    "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
+    "name": "b/purchases/0T01I5h963/V93017AbKR GET valid",
+    "url": "localhost:8001/b/purchases/0T01I5h963/V93017AbKR",
+    "method": "GET",
+    "sortNum": 180000,
+    "created": "2023-04-17T02:17:15.611Z",
+    "modified": "2023-04-17T02:17:15.611Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"City\": \"Raleigh\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"OrderNumber\": 12"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"PurchaseDate\": \"Mon, 21 Feb 2022 01:45:02 GMT\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"PurchaseQuantity\": 1,"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"State\": \"NC\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Street\": \"3322 Johnson Crossing\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Zip\": \"83640\""
+      }
+    ]
+  },
+  {
+    "_id": "d462da6e-7b73-42bf-9e37-93341cac2225",
+    "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
+    "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
+    "name": "b/purchases/0T01I5h963/V93017AbKR GET invalid",
+    "url": "localhost:8001/b/purchases/invalid/invalid",
+    "method": "GET",
+    "sortNum": 190000,
+    "created": "2023-04-17T02:17:22.547Z",
+    "modified": "2023-04-17T02:17:52.703Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "invalid purhcase"
+      }
+    ]
   }
 ]
