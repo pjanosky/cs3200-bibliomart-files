@@ -1546,5 +1546,32 @@
         "value": "\"ShipperName\": \"Fedex\""
       }
     ]
+  },
+  {
+    "_id": "df50b100-2524-411c-8076-dd681e4bb4e9",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings_id/ GET VALID",
+    "url": "localhost:8001/a/listings_id/849061589-6",
+    "method": "GET",
+    "sortNum": 250000,
+    "created": "2023-04-18T17:06:09.338Z",
+    "modified": "2023-04-18T17:06:09.338Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": ""
+      }
+    ]
   }
 ]
