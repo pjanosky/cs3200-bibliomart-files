@@ -166,12 +166,9 @@ def get_user_review(UserId):
 # /reviews/{UserId}/{ReviewId} - GET
 # Gets a selected review of the given user
 @administrators.route('/UserReviews/<UserId>/<ReviewId>', methods = ['GET'])
-def get_one_user_review(UserId, ReviewId):
+def get_one_review(UserId, ReviewId):
     cursor = db.get_db().cursor()
-    query = f"""select UserId, ReviewId, ReviewDate, Rating, ReviewComment
-    FROM UserReviews 
-    WHERE UserId = '{UserId}' AND ReviewId = '{ReviewId}';"""
-
+    query = f"select UserId, ReviewId, ReviewDate, Rating, ReviewComment from UserReviews WHERE UserId = '{UserId}' and ReviewId = '{ReviewId}'"
     current_app.logger.info(query)
     cursor.execute(query)
     row_header = [x[0] for x in cursor.description]
@@ -184,12 +181,10 @@ def get_one_user_review(UserId, ReviewId):
     the_response.mimetype = 'UserReviews/json'
     return the_response
 
-
-
 # /reviews/{userId}/{reviewID} - DELETE
 # Deletes a selected review
 @administrators.route('/UserReviews/<UserId>/<ReviewId>', methods = ['DELETE'])
-def delete_purchase_info(UserId, ReviewId):
+def delete_selected_review(UserId, ReviewId):
     cursor = db.get_db().cursor()
     query = f"DELETE FROM UserReviews WHERE UserId = '{UserId}' and ReviewId = '{ReviewId}'"
     current_app.logger.info(query)
@@ -231,7 +226,7 @@ def add_user_review(UserId):
 # /reviews/{userId}/{reviewID} -PUT
 # Updates a selected review
 @administrators.route('/UserReviews/<UserId>/<ReviewId>', methods=['PUT'])
-def update_purchase_info(UserId, ReviewId):
+def update_review_info(UserId, ReviewId):
     
     req_data = request.json
     ReviewComment = req_data['ReviewComment']
