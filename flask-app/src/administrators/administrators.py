@@ -195,9 +195,9 @@ def get_one_review(user_id, review_id):
 
 # /reviews/{userId}/{reviewID} - DELETE
 # Deletes a selected review
-@administrators.route('/UserReviews/<user_id>/<review_id>', methods = ['DELETE'])
-def delete_selected_review(user_id, review_id):
-    query = f"DELETE FROM UserReviews WHERE UserId = '{user_id}' and ReviewId = '{review_id}';"
+@administrators.route('/UserReviews/<UserId>/<ReviewId>', methods = ['DELETE'])
+def delete_selected_review(UserId, ReviewId):
+    query = f"DELETE FROM UserReviews WHERE UserId = '{UserId}' and ReviewId = '{ReviewId}';"
     current_app.logger.info(query)
     
     cursor = db.get_db().cursor()
@@ -219,10 +219,10 @@ def add_user_review(user_id):
     comment = req_data['Comment']
     rating = req_data['Rating']
 
-    current_app.logger.info(query)
     query = f'''INSERT INTO UserReviews (UserId, ReviewId, ReviewComment, Rating) 
     VALUES ('{user_id}', '{review_id}', '{comment}', {rating})'''
     
+    current_app.logger.info(query)
     cursor = db.get_db().cursor()
     try: 
         cursor.execute(query)
@@ -239,11 +239,10 @@ def add_user_review(user_id):
 def update_review_info(user_id, review_id):
     req_data = request.json
     ReviewComment = req_data['ReviewComment']
-    ReviewDate = req_data['ReviewDate']
     Rating = req_data['Rating']
     
     query = f'''UPDATE UserReviews
-    SET ReviewComment = '{ReviewComment}', ReviewDate = '{ReviewDate}', Rating = '{Rating}'
+    SET ReviewComment = '{ReviewComment}', Rating = '{Rating}'
     WHERE UserId = '{user_id}' AND ReviewId = '{review_id}';'''
     current_app.logger.info(query)
 

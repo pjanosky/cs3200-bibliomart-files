@@ -507,12 +507,12 @@
     "method": "POST",
     "sortNum": 40000,
     "created": "2023-04-15T22:26:02.695Z",
-    "modified": "2023-04-18T20:30:16.077Z",
+    "modified": "2023-04-17T00:02:03.666Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"Quantity\": 1294,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"Os05xh29TU\",\n    \"ShipperName\": \"Fedex\",\n    \"ISBN\": \"946229414-3\"\n}\n",
+      "raw": "{\n    \"ListingId\": \"\",\n    \"Quantity\": \"5\",\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"719980671-X\"\n}\n",
       "form": []
     },
     "tests": [
@@ -535,11 +535,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/delete/ DELETE VALID",
-    "url": "localhost:8001/a/listings/946229414-3",
+    "url": "localhost:8001/a/listings/VNfiQteIAv",
     "method": "DELETE",
     "sortNum": 80000,
     "created": "2023-04-15T22:31:26.693Z",
-    "modified": "2023-04-18T20:32:07.437Z",
+    "modified": "2023-04-16T23:16:06.113Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -581,6 +581,54 @@
         "custom": "",
         "action": "contains",
         "value": "Success"
+      }
+    ]
+  },
+  {
+    "_id": "9701ad48-10d0-462b-8e8b-c31e82ccaef3",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings/delete/ DELETE INVALID",
+    "url": "localhost:8001/a/listings/8",
+    "method": "DELETE",
+    "sortNum": 90000,
+    "created": "2023-04-15T22:34:35.555Z",
+    "modified": "2023-04-17T00:04:53.545Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"message\": \"Failed to delete listing 8\""
+      }
+    ]
+  },
+  {
+    "_id": "9701ad48-10d0-462b-8e8b-c31e82ccaef3",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings/delete/ DELETE INVALID",
+    "url": "localhost:8001/a/Listings/oogabooga",
+    "method": "DELETE",
+    "sortNum": 90000,
+    "created": "2023-04-15T22:34:35.555Z",
+    "modified": "2023-04-16T19:24:48.059Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
       }
     ]
   },
@@ -795,17 +843,17 @@
     "_id": "85b74762-f839-4f08-95c5-51cba8635b14",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/listings/ PUT VALID",
-    "url": "localhost:8001/a/listings/946229414-3",
-    "method": "POST",
+    "name": "/a/listings/ PUT INVALID",
+    "url": "localhost:8001/a/listings/awfaw",
+    "method": "PUT",
     "sortNum": 60000,
     "created": "2023-04-16T00:12:04.755Z",
-    "modified": "2023-04-18T20:29:30.773Z",
+    "modified": "2023-04-17T00:02:50.147Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"Quantity\": 1294,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"Os05xh29TU\",\n    \"ShipperName\": \"Fedex\",\n    \"ISBN\": \"946229414-3\"\n}\n",
+      "raw": "{\n    \"ListingId\": \"\",\n    \"Quantity\": 1294,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"978-3-16-148410-0\"\n}\n",
       "form": []
     },
     "tests": [
@@ -958,7 +1006,7 @@
     "method": "DELETE",
     "sortNum": 127500,
     "created": "2023-04-16T00:59:25.338Z",
-    "modified": "2023-04-16T23:35:18.093Z",
+    "modified": "2023-04-18T22:48:59.473Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -967,12 +1015,6 @@
         "custom": "",
         "action": "equal",
         "value": "200"
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "contains",
-        "value": "Success"
       }
     ]
   },
@@ -1477,11 +1519,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/shipper GET",
-    "url": "localhost:8001/a/shippers",
+    "url": "localhost:8001/a/shipper",
     "method": "GET",
     "sortNum": 240000,
     "created": "2023-04-18T03:56:53.559Z",
-    "modified": "2023-04-18T21:24:19.277Z",
+    "modified": "2023-04-18T03:56:53.559Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -1495,7 +1537,7 @@
         "type": "res-body",
         "custom": "",
         "action": "contains",
-        "value": "\"label\": \"Fedex\""
+        "value": "\"ShipperName\": \"Fedex\""
       }
     ]
   },
