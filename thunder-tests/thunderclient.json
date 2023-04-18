@@ -1088,11 +1088,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "c635f648-092c-46f7-83b1-59ae8e3aa71f",
     "name": "localhost:8001/b/UserReviews/Sfx1Bq2478",
-    "url": "localhost:8001/a/UserReviews/Sfx1Bq2478/oKWpul6343",
+    "url": "localhost:8001/a/UserReviews/734VF5c2kx/7Hcv1XhY50",
     "method": "GET",
     "sortNum": 200000,
     "created": "2023-04-16T01:06:00.203Z",
-    "modified": "2023-04-16T01:06:00.203Z",
+    "modified": "2023-04-18T04:53:50.072Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -1100,31 +1100,31 @@
         "type": "res-body",
         "custom": "",
         "action": "contains",
-        "value": "\"UserId\": \"Sfx1Bq2478\""
+        "value": "\"UserId\": \"734VF5c2kx\""
       },
       {
         "type": "res-body",
         "custom": "",
         "action": "contains",
-        "value": "\"ReviewId\": \"oKWpul6343\""
+        "value": "\"ReviewId\": \"7Hcv1XhY50\""
       },
       {
         "type": "res-body",
         "custom": "",
         "action": "contains",
-        "value": "\"ReviewDate\": \"Thu, 05 May 2022 11:51:18 GMT\""
+        "value": "\"ReviewDate\": \"Fri, 26 Nov 2021 08:11:15 GMT\""
       },
       {
         "type": "res-body",
         "custom": "",
         "action": "contains",
-        "value": "\"Rating\": 1"
+        "value": "\"Rating\": 8"
       },
       {
         "type": "res-body",
         "custom": "",
         "action": "contains",
-        "value": " \"ReviewComment\": \"non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis\""
+        "value": " \"ReviewComment\": \"quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus\""
       },
       {
         "type": "res-code",
