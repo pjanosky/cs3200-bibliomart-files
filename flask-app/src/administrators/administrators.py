@@ -13,8 +13,8 @@ administrators = Blueprint('administrators', __name__)
 # Get a list of textbooks and their associated listings
 @administrators.route('/textbooks', methods=['GET'])
 def get_textbooks():
-    query = """SELECT * FROM Textbooks LEFT OUTER JOIN Listings
-    ON Textbooks.ISBN = Listings.ISBN;"""
+    query = '''SELECT * FROM Textbooks LEFT OUTER JOIN Listings
+    ON Textbooks.ISBN = Listings.ISBN;'''
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
@@ -107,9 +107,9 @@ def edit_listing(isbn):
     employee_id = req_data.get('EmployeeId')
     shipper_name = req_data.get('ShipperName')
     
-    query = f"""UPDATE Listings
+    query = f'''UPDATE Listings
     SET Quantity = {quantity}, Price = {price}, EmployeeId = '{employee_id}', ShipperName = '{shipper_name}'
-    WHERE isbn = {isbn}"""
+    WHERE ISBN = '{isbn}';'''
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
@@ -126,9 +126,9 @@ def edit_listing(isbn):
 
 # /listings/{listingId} - DELETE
 # Removes a given listing
-@administrators.route('/listings/<listing_id>', methods=['DELETE'])
-def delete_listing(listing_id):
-    query = f"DELETE FROM Listings WHERE ListingId = '{listing_id}';"
+@administrators.route('/listings/<isbn>', methods=['DELETE'])
+def delete_listing(isbn):
+    query = f"DELETE FROM Listings WHERE ISBN = '{isbn}';"
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
@@ -149,9 +149,9 @@ def delete_listing(listing_id):
 
 @administrators.route('/UserReviews/<UserId>', methods = ['GET'])
 def get_user_review(UserId):
-    query = f"""select UserId, ReviewId, ReviewDate, Rating, ReviewComment
+    query = f'''select UserId, ReviewId, ReviewDate, Rating, ReviewComment
     FROM UserReviews
-    WHERE UserId = '{UserId}';"""
+    WHERE UserId = '{UserId}';'''
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
@@ -174,9 +174,9 @@ def get_user_review(UserId):
 # Gets a selected review of the given user
 @administrators.route('/UserReviews/<user_id>/<review_id>', methods = ['GET'])
 def get_one_review(user_id, review_id):
-    query = f"""select UserId, ReviewId, ReviewDate, Rating, ReviewComment
+    query = f'''select UserId, ReviewId, ReviewDate, Rating, ReviewComment
     FROM UserReviews
-    WHERE UserId = '{user_id}' and ReviewId = '{review_id}';"""
+    WHERE UserId = '{user_id}' and ReviewId = '{review_id}';'''
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
@@ -220,8 +220,8 @@ def add_user_review(user_id):
     rating = req_data['Rating']
 
     current_app.logger.info(query)
-    query = f"""INSERT INTO UserReviews (UserId, ReviewId, ReviewComment, Rating) 
-    VALUES ('{user_id}', '{review_id}', '{comment}', {rating})"""
+    query = f'''INSERT INTO UserReviews (UserId, ReviewId, ReviewComment, Rating) 
+    VALUES ('{user_id}', '{review_id}', '{comment}', {rating})'''
     
     cursor = db.get_db().cursor()
     try: 
@@ -242,9 +242,9 @@ def update_review_info(user_id, review_id):
     ReviewDate = req_data['ReviewDate']
     Rating = req_data['Rating']
     
-    query = f"""UPDATE UserReviews
+    query = f'''UPDATE UserReviews
     SET ReviewComment = '{ReviewComment}', ReviewDate = '{ReviewDate}', Rating = '{Rating}'
-    WHERE UserId = '{user_id}' AND ReviewId = '{review_id}';"""
+    WHERE UserId = '{user_id}' AND ReviewId = '{review_id}';'''
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()

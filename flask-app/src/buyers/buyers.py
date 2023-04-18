@@ -123,7 +123,7 @@ def get_users():
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
-    cursor.execute()
+    cursor.execute(query)
     
     row_headers = [x[0] for x in cursor.description]
     json_data = []
@@ -147,10 +147,10 @@ def get_author():
     if isbn is not None:
         conditions.append(f"T.ISBN = '{isbn}'")
 
-    query = f"""SELECT FirstName, LastName, Bio FROM Authors
+    query = f'''SELECT FirstName, LastName, Bio FROM Authors
     JOIN AuthorDetails AD on Authors.AuthorId = AD.AuthorId
     JOIN Textbooks T on AD.ISBN = T.ISBN
-    WHERE {' AND '.join(conditions)};"""
+    WHERE {' AND '.join(conditions)};'''
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
@@ -323,7 +323,7 @@ def get_purchase_info(user_id, listing_id):
     row_headers = [x[0] for x in cursor.description]
     the_data = cursor.fetchall()
     if len(the_data) != 1:
-        return {}
+        return make_response(f'no purchase with user ID: {user_id} and listing ID: {listing_id}', 400)
     json_data = dict(zip(row_headers, the_data[0]))
     
     the_response = make_response(jsonify(json_data))
