@@ -317,7 +317,7 @@ def get_employees():
 # get all of the shippers in the database
 @administrators.route('/shippers', methods=['GET'])
 def get_shippers():
-    query = f'SELECT ShipperName FROM Shippers;'
+    query = f'SELECT ShipperName as label, ShipperName as value FROM Shippers;'
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
