@@ -676,25 +676,31 @@
     "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
     "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
     "name": "/b/authors/<id> GET INVALID",
-    "url": "localhost:8001/b/authors/300",
+    "url": "localhost:8001/b/authors?isbn=invalid",
     "method": "GET",
     "sortNum": 120000,
     "created": "2023-04-15T23:24:06.497Z",
-    "modified": "2023-04-17T00:06:03.359Z",
+    "modified": "2023-04-17T01:55:43.149Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "isbn",
+        "value": "invalid",
+        "isPath": false
+      }
+    ],
     "tests": [
       {
         "type": "res-code",
         "custom": "",
         "action": "equal",
-        "value": "400"
+        "value": "200"
       },
       {
         "type": "res-body",
         "custom": "",
-        "action": "contains",
-        "value": "invalid Author ID: 300"
+        "action": "equal",
+        "value": "[]"
       }
     ]
   },
@@ -724,13 +730,19 @@
     "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
     "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
     "name": "/b/authors/<id> GET VALID",
-    "url": "localhost:8001/b/authors/sH2O868225",
+    "url": "localhost:8001/b/authors?isbn=486038089-4",
     "method": "GET",
     "sortNum": 130000,
     "created": "2023-04-15T23:43:59.159Z",
-    "modified": "2023-04-16T23:57:58.226Z",
+    "modified": "2023-04-17T01:55:20.874Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "isbn",
+        "value": "486038089-4",
+        "isPath": false
+      }
+    ],
     "tests": [
       {
         "type": "res-code",
@@ -1343,6 +1355,222 @@
         "custom": "",
         "action": "equal",
         "value": "200"
+      }
+    ]
+  },
+  {
+    "_id": "63ebe8b7-3b1e-4f2c-be90-95bf6b92dcc8",
+    "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
+    "containerId": "f42c79e6-b0df-41e0-b2aa-a34afaeff29e",
+    "name": "b/textbooks/{isbn} GET valid",
+    "url": "localhost:8001/b/textbooks/951983070-7",
+    "method": "GET",
+    "sortNum": 160000,
+    "created": "2023-04-17T00:48:47.363Z",
+    "modified": "2023-04-17T00:48:47.363Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Authors\": \"Sayers Pearcey, Binni Deavin\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Edition\": 4"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ISBN\": \"951983070-7\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Title\": \"phasellus sit amet erat\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"YearPublished\": 2012"
+      }
+    ]
+  },
+  {
+    "_id": "b6893ed2-366f-45d0-a9ec-b0d52be30ab8",
+    "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
+    "containerId": "f42c79e6-b0df-41e0-b2aa-a34afaeff29e",
+    "name": "b/textbooks/{isbn} GET invalid",
+    "url": "localhost:8001/b/textbooks/invalid",
+    "method": "GET",
+    "sortNum": 170000,
+    "created": "2023-04-17T00:48:55.788Z",
+    "modified": "2023-04-17T00:49:12.725Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
+      }
+    ]
+  },
+  {
+    "_id": "256eb61c-d48b-441d-99bb-3f06cb35c6f8",
+    "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
+    "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
+    "name": "b/purchases/0T01I5h963/V93017AbKR GET valid",
+    "url": "localhost:8001/b/purchases/0T01I5h963/V93017AbKR",
+    "method": "GET",
+    "sortNum": 180000,
+    "created": "2023-04-17T02:17:15.611Z",
+    "modified": "2023-04-17T02:17:15.611Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"City\": \"Raleigh\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"OrderNumber\": 12"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"PurchaseDate\": \"Mon, 21 Feb 2022 01:45:02 GMT\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"PurchaseQuantity\": 1,"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"State\": \"NC\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Street\": \"3322 Johnson Crossing\""
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"Zip\": \"83640\""
+      }
+    ]
+  },
+  {
+    "_id": "d462da6e-7b73-42bf-9e37-93341cac2225",
+    "colId": "fc7d85bf-f918-4b62-8661-7eddbc4fa101",
+    "containerId": "56803af7-8e5b-4115-9db3-2ac27473471e",
+    "name": "b/purchases/0T01I5h963/V93017AbKR GET invalid",
+    "url": "localhost:8001/b/purchases/invalid/invalid",
+    "method": "GET",
+    "sortNum": 190000,
+    "created": "2023-04-17T02:17:22.547Z",
+    "modified": "2023-04-17T02:17:52.703Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "400"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "invalid purhcase"
+      }
+    ]
+  },
+  {
+    "_id": "2bf9616d-eea6-4e07-86ae-104ca757762e",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/shipper GET",
+    "url": "localhost:8001/a/shipper",
+    "method": "GET",
+    "sortNum": 240000,
+    "created": "2023-04-18T03:56:53.559Z",
+    "modified": "2023-04-18T03:56:53.559Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ShipperName\": \"Fedex\""
+      }
+    ]
+  },
+  {
+    "_id": "df50b100-2524-411c-8076-dd681e4bb4e9",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/listings_id/ GET VALID",
+    "url": "localhost:8001/a/listings_id/849061589-6",
+    "method": "GET",
+    "sortNum": 250000,
+    "created": "2023-04-18T17:06:09.338Z",
+    "modified": "2023-04-18T17:06:09.338Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": ""
       }
     ]
   }

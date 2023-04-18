@@ -12,6 +12,36 @@ buyers = Blueprint('buyers', __name__)
 # Joins with the listing ID for that textbook (null if no listing)
 # author={name}
 # title={tile}
+@buyers.route('/textbooks/<isbn>', methods=['GET'])
+def get_textbook(isbn):
+    query = f'''SELECT T.ISBN, T.Title, T.Edition, T.YearPublished,
+    GROUP_CONCAT(Concat(A.FirstName, ' ', A.LastName) SEPARATOR ', ') as Authors
+    FROM Textbooks T
+    LEFT OUTER JOIN AuthorDetails AD on T.ISBN = AD.ISBN
+    LEFT OUTER JOIN Authors A on AD.AuthorId = A.AuthorId
+    WHERE T.ISBN = '{isbn}'
+    GROUP BY T.ISBN
+    LIMIT 1;'''
+
+    current_app.logger.info(query)
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    
+    row_headers = [x[0] for x in cursor.description]
+    the_data = cursor.fetchall()
+    if len(the_data) != 1:
+        return make_response(f'no textbook with isbn: {isbn}', 400)
+    json_data = dict(zip(row_headers, the_data[0]))
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+# Gets the textbooks matching 1 of three query parameters
+# Joins with the listing ID for that textbook (null if no listing)
+# author={name}
+# title={tile}
 @buyers.route('/textbooks', methods=['GET'])
 def get_textbooks():
     conditions = ['TRUE']
@@ -93,7 +123,7 @@ def get_listings():
 def get_users():
     cursor = db.get_db().cursor()
     cursor.execute(f'''SELECT CONCAT(FirstName, ' ', LastName) 
-            AS Label, UserId AS Value
+            AS label, UserId AS value
             FROM Users;''')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
@@ -107,15 +137,19 @@ def get_users():
 
 
 
-# /authors/{id} - GET
-# Returns details on the author and other book they wrote
-@buyers.route('/authors/<AuthorID>', methods=['GET'])
-def get_author(AuthorID):
-    query = f'''SELECT A.AuthorID, FirstName, LastName, AD.ISBN, T.Title 
-    FROM Authors A
-            JOIN AuthorDetails AD ON A.AuthorID = AD.AuthorId
-            JOIN  Textbooks T on AD.ISBN = T.ISBN
-    WHERE A.AuthorID = '{AuthorID}';'''
+# /authors?isbn={isbn} - GET
+# Returns details on each author the a given isbn
+@buyers.route('/authors', methods=['GET'])
+def get_author():
+    conditions = ['True']
+    isbn = request.args.get('isbn')
+    if isbn is not None:
+        conditions.append(f"T.ISBN = '{isbn}'")
+
+    query = f"""SELECT FirstName, LastName, Bio FROM Authors
+    JOIN AuthorDetails AD on Authors.AuthorId = AD.AuthorId
+    JOIN Textbooks T on AD.ISBN = T.ISBN
+    WHERE {' AND '.join(conditions)};"""
 
     current_app.logger.info(query)
     cursor = db.get_db().cursor()
@@ -123,9 +157,9 @@ def get_author(AuthorID):
     
     row_headers = [x[0] for x in cursor.description]
     the_data = cursor.fetchall()
-    if len(the_data) < 1:
-        return make_response(f'invalid Author ID: {AuthorID}', 400)
-    json_data = dict(zip(row_headers, the_data[0]))
+    json_data = []
+    for row in the_data:
+        json_data.append(dict(zip(row_headers, the_data[0])))
     
     the_response = make_response(jsonify(json_data))
     the_response.status_code = 200
@@ -256,7 +290,7 @@ def update_purchase_info(UserId, ListingId):
 # /purchases/{UserId}/{ListingId} - DELETE
 # Cancels a purchase order by deleting it from the database
 
-@buyers.route('/purchaseinfo/<UserId>/<ListingId>', methods = ['DELETE'])
+@buyers.route('/purchases/<UserId>/<ListingId>', methods = ['DELETE'])
 def delete_purchase_info(UserId, ListingId):
     cursor = db.get_db().cursor()
     query = f"DELETE FROM PurchaseInfo WHERE UserId = '{UserId}' and ListingId = '{ListingId}'"
@@ -271,3 +305,25 @@ def delete_purchase_info(UserId, ListingId):
     
     return "Success"
 
+# /listings/{listingId} - GET
+# Gets listing with the given listing ID
+@buyers.route('/purchases/<userId>/<listingId>', methods=['GET'])
+def get_purchase_info(userId, listingId):
+    query = f'''SELECT OrderNumber, Street, City, State, Zip, PurchaseDate, PurchaseQuantity
+    FROM PurchaseInfo
+    WHERE UserId = '{userId}' AND ListingId = '{listingId}';'''
+
+    current_app.logger.info(query)
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    
+    row_headers = [x[0] for x in cursor.description]
+    the_data = cursor.fetchall()
+    if len(the_data) != 1:
+        return {}
+    json_data = dict(zip(row_headers, the_data[0]))
+    
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response

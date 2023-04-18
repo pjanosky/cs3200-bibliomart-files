@@ -51,6 +51,30 @@ def get_listing(isbn):
     the_response.mimetype = 'application/json'
     return the_response
 
+# /listings/{isbn} - GET
+# Gets listing with given isbn
+@administrators.route('/listings_id/<isbn>', methods=['GET'])
+def get_listingid(isbn):
+    query = f'''SELECT ListingId
+                FROM Listings 
+                WHERE ISBN = '{isbn}'; '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    results = cursor.fetchall()
+    if not results:
+        error_msg = {'error': 'No listings found for this ISBN.'}
+        the_response = make_response(jsonify(error_msg))
+        the_response.status_code = 404
+    else:
+        for row in results:
+            json_data.append(dict(zip(row_headers, row)))
+        the_response = make_response(jsonify(json_data))
+        the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
 
 # /listings/ - POST
 # Adds a new listing for a given textbook
@@ -64,7 +88,7 @@ def make_listing():
     shipper_name = data['ShipperName']
     isbn = data['ISBN']
 
-    # add the new purchase
+    # add the new listing
     query = f'''INSERT INTO Listings
             (ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN)
             VALUES ('{listing_id}', '{quantity}', '{price}', '{employee_id}', '{shipper_name or "Null"}', '{isbn}');'''
@@ -282,6 +306,34 @@ def get_users():
 def get_employees():
     query = f'''SELECT CONCAT(FirstName, ' ', LastName) as Label, EmployeeId as Value 
     FROM Employees;'''
+
+    current_app.logger.info(query)
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    try: 
+        cursor.execute(query)
+        db.get_db().commit()
+    except IntegrityError as e:
+        return make_response(str(e), 400)
+    
+    row_headers = [x[0] for x in cursor.description]
+    the_data = cursor.fetchall()
+    json_data = []
+    for row in the_data:
+        json_data.append(dict(zip(row_headers, row)))
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+
+# /shippers - GET
+# get all of the shippers in the database
+@administrators.route('/shipper', methods=['GET'])
+def get_shipper():
+    query = f'''SELECT ShipperName 
+    FROM Shippers;'''
 
     current_app.logger.info(query)
     cursor = db.get_db().cursor()
