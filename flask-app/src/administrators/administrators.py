@@ -307,3 +307,31 @@ def get_employees():
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
+
+
+# /shippers - GET
+# get all of the shippers in the database
+@administrators.route('/shipper', methods=['GET'])
+def get_shipper():
+    query = f'''SELECT ShipperName 
+    FROM Shippers;'''
+
+    current_app.logger.info(query)
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    try: 
+        cursor.execute(query)
+        db.get_db().commit()
+    except IntegrityError as e:
+        return make_response(str(e), 400)
+    
+    row_headers = [x[0] for x in cursor.description]
+    the_data = cursor.fetchall()
+    json_data = []
+    for row in the_data:
+        json_data.append(dict(zip(row_headers, row)))
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response

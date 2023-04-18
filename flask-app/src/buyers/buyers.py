@@ -290,7 +290,7 @@ def update_purchase_info(UserId, ListingId):
 # /purchases/{UserId}/{ListingId} - DELETE
 # Cancels a purchase order by deleting it from the database
 
-@buyers.route('/purchaseinfo/<UserId>/<ListingId>', methods = ['DELETE'])
+@buyers.route('/purchases/<UserId>/<ListingId>', methods = ['DELETE'])
 def delete_purchase_info(UserId, ListingId):
     cursor = db.get_db().cursor()
     query = f"DELETE FROM PurchaseInfo WHERE UserId = '{UserId}' and ListingId = '{ListingId}'"
@@ -320,7 +320,7 @@ def get_purchase_info(userId, listingId):
     row_headers = [x[0] for x in cursor.description]
     the_data = cursor.fetchall()
     if len(the_data) != 1:
-        return make_response(f'invalid purhcase (listing id: {listingId}, user id: ${userId})', 400)
+        return {}
     json_data = dict(zip(row_headers, the_data[0]))
     
     the_response = make_response(jsonify(json_data))

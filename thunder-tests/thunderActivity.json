@@ -749,5 +749,46 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "5c75326f-2732-46ae-81ad-4bb5e9d2a427",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8081/a/shipper",
+    "url": "localhost:8081/a/shipper",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-18T03:20:55.084Z",
+    "modified": "2023-04-18T03:20:55.084Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "c0552d46-8335-408f-95fb-f363af161760",
+    "colId": "history",
+    "containerId": "",
+    "name": "/a/shipper GET",
+    "url": "localhost:8001/a/shipper",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-18T03:21:36.938Z",
+    "modified": "2023-04-18T03:22:05.257Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ShipperName\": \"Fedex\""
+      }
+    ]
   }
 ]

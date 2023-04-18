@@ -1519,5 +1519,32 @@
         "value": "invalid purhcase"
       }
     ]
+  },
+  {
+    "_id": "2bf9616d-eea6-4e07-86ae-104ca757762e",
+    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
+    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
+    "name": "/a/shipper GET",
+    "url": "localhost:8001/a/shipper",
+    "method": "GET",
+    "sortNum": 240000,
+    "created": "2023-04-18T03:56:53.559Z",
+    "modified": "2023-04-18T03:56:53.559Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ShipperName\": \"Fedex\""
+      }
+    ]
   }
 ]
