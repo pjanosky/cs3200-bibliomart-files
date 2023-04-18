@@ -219,9 +219,9 @@ def add_user_review(user_id):
     comment = req_data['Comment']
     rating = req_data['Rating']
 
-    current_app.logger.info(query)
     query = f'''INSERT INTO UserReviews (UserId, ReviewId, ReviewComment, Rating) 
     VALUES ('{user_id}', '{review_id}', '{comment}', {rating})'''
+    current_app.logger.info(query)
     
     cursor = db.get_db().cursor()
     try: 
@@ -239,11 +239,10 @@ def add_user_review(user_id):
 def update_review_info(user_id, review_id):
     req_data = request.json
     ReviewComment = req_data['ReviewComment']
-    ReviewDate = req_data['ReviewDate']
     Rating = req_data['Rating']
     
     query = f'''UPDATE UserReviews
-    SET ReviewComment = '{ReviewComment}', ReviewDate = '{ReviewDate}', Rating = '{Rating}'
+    SET ReviewComment = '{ReviewComment}', Rating = '{Rating}'
     WHERE UserId = '{user_id}' AND ReviewId = '{review_id}';'''
     current_app.logger.info(query)
 
@@ -317,7 +316,7 @@ def get_employees():
 # get all of the shippers in the database
 @administrators.route('/shippers', methods=['GET'])
 def get_shippers():
-    query = f'SELECT ShipperName FROM Shippers;'
+    query = f'SELECT ShipperName AS label, ShipperName AS value FROM Shippers;'
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
