@@ -149,7 +149,7 @@ def edit_listing(listingId):
 
 # /listings/{listingId} - DELETE
 # Removes a given listing
-@administrators.route('/Listings/<ListingId>', methods=['DELETE'])
+@administrators.route('/listings/<ListingId>', methods=['DELETE'])
 def delete_listing(ListingId):
     cursor = db.get_db().cursor()
     query = f"DELETE FROM Listings WHERE ListingId = '{ListingId}'"
@@ -309,7 +309,7 @@ def get_users():
 # get all of the employees in the database
 @administrators.route('/employees', methods=['GET'])
 def get_employees():
-    query = f'''SELECT CONCAT(FirstName, ' ', LastName) as Label, EmployeeId as Value 
+    query = f'''SELECT CONCAT(FirstName, ' ', LastName) as label, EmployeeId as value 
     FROM Employees;'''
 
     current_app.logger.info(query)
@@ -337,7 +337,7 @@ def get_employees():
 # get all of the shippers in the database
 @administrators.route('/shipper', methods=['GET'])
 def get_shipper():
-    query = f'''SELECT ShipperName 
+    query = f'''SELECT ShipperName AS label, ShipperName AS value
     FROM Shippers;'''
 
     current_app.logger.info(query)

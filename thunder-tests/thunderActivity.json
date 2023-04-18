@@ -796,11 +796,11 @@
     "colId": "history",
     "containerId": "",
     "name": "localhost:8001/a/listing_id/849061589-6",
-    "url": "localhost:8001/a/listing_id/849061589-6",
+    "url": "localhost:8001/a/listings_id/849061589-6",
     "method": "GET",
     "sortNum": 0,
     "created": "2023-04-18T17:05:34.060Z",
-    "modified": "2023-04-18T17:05:34.060Z",
+    "modified": "2023-04-18T18:25:09.457Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -844,5 +844,130 @@
         "value": ""
       }
     ]
+  },
+  {
+    "_id": "42406adb-218e-437e-8ca4-3e34b19141b1",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/listings_id/849061589-6",
+    "url": "localhost:8001/a/listings_id/849061589-6",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-18T18:25:29.590Z",
+    "modified": "2023-04-18T18:25:29.590Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "contains",
+        "value": "\"ListingId\": \"1xKphW3rgI\""
+      }
+    ]
+  },
+  {
+    "_id": "211735f8-b82f-4261-bf61-d11ad3154141",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/listings/A6S96WNR27",
+    "url": "localhost:8001/a/listings/A6S96WNR27",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-18T19:31:38.845Z",
+    "modified": "2023-04-18T19:31:38.845Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "db4c127a-6a23-4f8a-b534-cd3ca0da3019",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/listings/v3rIdX78u0",
+    "url": "localhost:8001/a/listings/v3rIdX78u0",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-18T19:49:08.906Z",
+    "modified": "2023-04-18T19:49:08.906Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "275dd330-a990-408a-afc9-b56292441baa",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/listings/z1X3W37W19",
+    "url": "localhost:8001/a/listings/z1X3W37W19",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-18T19:49:30.849Z",
+    "modified": "2023-04-18T19:49:30.849Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "ec2a1b8e-9a4f-4f81-a653-04be17b1616e",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/listings/YP6O9eh901",
+    "url": "localhost:8001/a/listings/YP6O9eh901",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-18T19:50:08.018Z",
+    "modified": "2023-04-18T19:50:08.018Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "4fcd22f6-692c-422c-9ef0-116c1b2db0d4",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/listings/vs14983k06",
+    "url": "localhost:8001/a/listings/vs14983k06",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-18T19:52:41.322Z",
+    "modified": "2023-04-18T19:52:41.322Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "00fe77c3-c1d4-4edb-b725-f12d5cddabec",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/listings/z1X3W37W19",
+    "url": "localhost:8001/a/listings/z1X3W37W19",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-18T20:02:57.247Z",
+    "modified": "2023-04-18T20:02:57.247Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "47c45419-0a91-4be3-b63a-900406bfe39e",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/a/listings/618959041-1",
+    "url": "localhost:8001/a/listings/618959041-1",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-18T20:03:21.746Z",
+    "modified": "2023-04-18T20:03:21.746Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

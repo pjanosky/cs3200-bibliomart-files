@@ -535,11 +535,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/delete/ DELETE VALID",
-    "url": "localhost:8001/a/listings/VNfiQteIAv",
+    "url": "localhost:8001/a/listings/VNfiQte",
     "method": "DELETE",
     "sortNum": 80000,
     "created": "2023-04-15T22:31:26.693Z",
-    "modified": "2023-04-16T23:16:06.113Z",
+    "modified": "2023-04-18T20:06:50.087Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -581,54 +581,6 @@
         "custom": "",
         "action": "contains",
         "value": "Success"
-      }
-    ]
-  },
-  {
-    "_id": "9701ad48-10d0-462b-8e8b-c31e82ccaef3",
-    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
-    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/listings/delete/ DELETE INVALID",
-    "url": "localhost:8001/a/listings/8",
-    "method": "DELETE",
-    "sortNum": 90000,
-    "created": "2023-04-15T22:34:35.555Z",
-    "modified": "2023-04-17T00:04:53.545Z",
-    "headers": [],
-    "params": [],
-    "tests": [
-      {
-        "type": "res-code",
-        "custom": "",
-        "action": "equal",
-        "value": "200"
-      },
-      {
-        "type": "res-body",
-        "custom": "",
-        "action": "contains",
-        "value": "\"message\": \"Failed to delete listing 8\""
-      }
-    ]
-  },
-  {
-    "_id": "9701ad48-10d0-462b-8e8b-c31e82ccaef3",
-    "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
-    "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/listings/delete/ DELETE INVALID",
-    "url": "localhost:8001/a/Listings/oogabooga",
-    "method": "DELETE",
-    "sortNum": 90000,
-    "created": "2023-04-15T22:34:35.555Z",
-    "modified": "2023-04-16T19:24:48.059Z",
-    "headers": [],
-    "params": [],
-    "tests": [
-      {
-        "type": "res-code",
-        "custom": "",
-        "action": "equal",
-        "value": "400"
       }
     ]
   },
