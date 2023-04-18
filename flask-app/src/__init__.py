@@ -23,11 +23,6 @@ def create_app():
 
     # Initialize the database object with the settings above. 
     db.init_app(app)
-    
-    # Add a default route
-    @app.route("/")
-    def welcome():
-        return "<h1>Welcome to the 3200 boilerplate app</h1>"
 
     # Import the various routes
     from src.administrators.administrators import administrators

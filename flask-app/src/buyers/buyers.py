@@ -22,8 +22,8 @@ def get_textbook(isbn):
     WHERE T.ISBN = '{isbn}'
     GROUP BY T.ISBN
     LIMIT 1;'''
-
     current_app.logger.info(query)
+
     cursor = db.get_db().cursor()
     cursor.execute(query)
     
@@ -45,15 +45,12 @@ def get_textbook(isbn):
 @buyers.route('/textbooks', methods=['GET'])
 def get_textbooks():
     conditions = ['TRUE']
-
     isbn = request.args.get('isbn')
     if isbn is not None:
         conditions.append(f"ISBN = '{isbn}'")
-
     author = request.args.get('author')
     if author is not None:
         conditions.append(f"Authors LIKE '%{author}%'")
-
     title = request.args.get('title')
     if title is not None:
         conditions.append(f"Title LIKE '%{title}%'")
@@ -67,8 +64,8 @@ def get_textbooks():
     GROUP BY T.ISBN) books
     WHERE {' AND '.join(conditions)}
     LIMIT 20;'''
-
     current_app.logger.info(query)
+
     cursor = db.get_db().cursor()
     cursor.execute(query)
     
@@ -89,7 +86,6 @@ def get_textbooks():
 @buyers.route('/listings', methods=['GET'])
 def get_listings():
     conditions = ['TRUE']
-
     isbn = request.args.get('isbn')
     if isbn is not None:
         conditions.append(f"ISBN = '{isbn}'")
@@ -98,8 +94,8 @@ def get_listings():
     FROM Listings
     WHERE {' AND '.join(conditions)}
     LIMIT 1;'''
-
     current_app.logger.info(query)
+
     cursor = db.get_db().cursor()
     cursor.execute(query)
     
@@ -121,15 +117,20 @@ def get_listings():
 # Get a list of all the user in the database to populate the user drop down
 @buyers.route('/users', methods=['GET'])
 def get_users():
+    query = f'''SELECT CONCAT(FirstName, ' ', LastName) 
+    AS label, UserId AS value
+    FROM Users;'''
+    current_app.logger.info(query)
+
     cursor = db.get_db().cursor()
-    cursor.execute(f'''SELECT CONCAT(FirstName, ' ', LastName) 
-            AS label, UserId AS value
-            FROM Users;''')
+    cursor.execute()
+    
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     users = cursor.fetchall()
     for row in users:
          json_data.append(dict(zip(row_headers, row)))
+    
     the_response = make_response(jsonify(json_data))
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
@@ -150,8 +151,8 @@ def get_author():
     JOIN AuthorDetails AD on Authors.AuthorId = AD.AuthorId
     JOIN Textbooks T on AD.ISBN = T.ISBN
     WHERE {' AND '.join(conditions)};"""
-
     current_app.logger.info(query)
+
     cursor = db.get_db().cursor()
     cursor.execute(query)
     
@@ -167,19 +168,19 @@ def get_author():
     return the_response
 
 
+
 # /tags{isbn} - GET
 # Gets all of the tags associated with the given book
 @buyers.route('/tags', methods=['GET'])
 def get_tags():
     conditions = ['TRUE']
-
     isbn = request.args.get('isbn')
     if isbn is not None:
         conditions.append(f"ISBN = '{isbn}'")
 
     query = f"SELECT * FROM Tags WHERE {' AND '.join(conditions)};"
-
     current_app.logger.info(query)
+
     cursor = db.get_db().cursor()
     cursor.execute(query)
     
@@ -193,7 +194,6 @@ def get_tags():
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
-
 
 
 
@@ -247,8 +247,8 @@ def get_listing(listing_id):
     FROM Listings
     WHERE ListingId = '{listing_id}'
     LIMIT 1;'''
-
     current_app.logger.info(query)
+
     cursor = db.get_db().cursor()
     cursor.execute(query)
     
@@ -268,17 +268,20 @@ def get_listing(listing_id):
 
 # /purchases/{UserId}/{ListingId} - PUT
 # Changes destination of purchase
-@buyers.route('/purchases/<UserId>/<ListingId>', methods=['PUT'])
-def update_purchase_info(UserId, ListingId):
+@buyers.route('/purchases/<user_id>/<listing_id>', methods=['PUT'])
+def update_purchase_info(user_id, listing_id):
     req_data = request.json
     street = req_data['street']
     city = req_data['city']
     state = req_data['state']
     zip = req_data['zip']
     
-    cursor = db.get_db().cursor()
-    query = f"UPDATE PurchaseInfo SET Street = '{street}', City = '{city}', State = '{state}', Zip = '{zip}' WHERE UserId = '{UserId}' AND  ListingId = '{ListingId}' "
+    query = f'''UPDATE PurchaseInfo
+    SET Street = '{street}', City = '{city}', State = '{state}', Zip = '{zip}'
+    WHERE UserId = '{user_id}' AND  ListingId = '{listing_id}';'''
     current_app.logger.info(query)
+
+    cursor = db.get_db().cursor()
     try: 
         cursor.execute(query)
         db.get_db().commit()
@@ -287,16 +290,16 @@ def update_purchase_info(UserId, ListingId):
 
     return "Success"
 
+
+
 # /purchases/{UserId}/{ListingId} - DELETE
 # Cancels a purchase order by deleting it from the database
-
-@buyers.route('/purchases/<UserId>/<ListingId>', methods = ['DELETE'])
-def delete_purchase_info(UserId, ListingId):
-    cursor = db.get_db().cursor()
-    query = f"DELETE FROM PurchaseInfo WHERE UserId = '{UserId}' and ListingId = '{ListingId}'"
+@buyers.route('/purchases/<user_id>/<listing_id>', methods = ['DELETE'])
+def delete_purchase_info(user_id, listing_id):
+    query = f'''DELETE FROM PurchaseInfo WHERE UserId = '{user_id}' and ListingId = '{listing_id}';'''
     current_app.logger.info(query)
-    cursor.execute(query)
 
+    cursor = db.get_db().cursor()
     try: 
         cursor.execute(query)
         db.get_db().commit()
@@ -307,13 +310,13 @@ def delete_purchase_info(UserId, ListingId):
 
 # /listings/{listingId} - GET
 # Gets listing with the given listing ID
-@buyers.route('/purchases/<userId>/<listingId>', methods=['GET'])
-def get_purchase_info(userId, listingId):
+@buyers.route('/purchases/<user_id>/<listing_id>', methods=['GET'])
+def get_purchase_info(user_id, listing_id):
     query = f'''SELECT OrderNumber, Street, City, State, Zip, PurchaseDate, PurchaseQuantity
     FROM PurchaseInfo
-    WHERE UserId = '{userId}' AND ListingId = '{listingId}';'''
-
+    WHERE UserId = '{user_id}' AND ListingId = '{listing_id}';'''
     current_app.logger.info(query)
+
     cursor = db.get_db().cursor()
     cursor.execute(query)
     
