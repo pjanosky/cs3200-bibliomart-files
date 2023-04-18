@@ -75,8 +75,8 @@ def make_listing():
 
     # add the new listing
     query = f'''INSERT INTO Listings
-    (ListingId,Quantity,Price,EmployeeId,ShipperName,ISBN)
-    VALUES ('{listing_id}', '{quantity}', '{price}', '{employee_id}', '{shipper_name or "Null"}', '{isbn}');'''
+    (ListingId, Quantity, Price, EmployeeId, ShipperName, ISBN)
+    VALUES ('{listing_id}', '{quantity}', '{price}', '{employee_id}', '{shipper_name or 'NULL'}', '{isbn}');'''
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
@@ -99,26 +99,25 @@ def make_listing():
 
 # /listings/{listingId} - PUT
 # Updates attributes of listing 
-@administrators.route('/listings/<listingId>', methods=['PUT'])
-def edit_listing(listingId):
+@administrators.route('/listings/<isbn>', methods=['PUT'])
+def edit_listing(isbn):
     req_data = request.get_json()
     quantity = req_data.get('Quantity')
     price = req_data.get('Price')
     employee_id = req_data.get('EmployeeId')
     shipper_name = req_data.get('ShipperName')
-    isbn = req_data.get('ISBN')
     
     query = f"""UPDATE Listings
-    SET Quantity = {quantity}, Price = {price}, EmployeeId = '{employee_id}', ShipperName = '{shipper_name}', ISBN = '{isbn}'
-    WHERE ListingId = %s"""
+    SET Quantity = {quantity}, Price = {price}, EmployeeId = '{employee_id}', ShipperName = '{shipper_name}'
+    WHERE isbn = {isbn}"""
     current_app.logger.info(query)
 
     cursor = db.get_db().cursor()
     try:
-        cursor.execute(query, (quantity, price, employee_id, shipper_name, isbn, listingId))
+        cursor.execute(query)
         db.get_db().commit()
     except IntegrityError as e:
-        return jsonify({"message": f"Listing {listingId} not found"}, 400)
+        return jsonify({"message": f"Listing {isbn} not found"}, 400)
 
     # return success message
     return jsonify({"message": "Listing updated successfully"})
