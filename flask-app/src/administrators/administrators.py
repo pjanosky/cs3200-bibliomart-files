@@ -195,9 +195,9 @@ def get_one_review(user_id, review_id):
 
 # /reviews/{userId}/{reviewID} - DELETE
 # Deletes a selected review
-@administrators.route('/UserReviews/<user_id>/<review_id>', methods = ['DELETE'])
-def delete_selected_review(user_id, review_id):
-    query = f"DELETE FROM UserReviews WHERE UserId = '{user_id}' and ReviewId = '{review_id}';"
+@administrators.route('/UserReviews/<UserId>/<ReviewId>', methods = ['DELETE'])
+def delete_selected_review(UserId, ReviewId):
+    query = f"DELETE FROM UserReviews WHERE UserId = '{UserId}' and ReviewId = '{ReviewId}';"
     current_app.logger.info(query)
     
     cursor = db.get_db().cursor()
