@@ -507,12 +507,12 @@
     "method": "POST",
     "sortNum": 40000,
     "created": "2023-04-15T22:26:02.695Z",
-    "modified": "2023-04-17T00:02:03.666Z",
+    "modified": "2023-04-18T20:30:16.077Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"ListingId\": \"\",\n    \"Quantity\": \"5\",\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"719980671-X\"\n}\n",
+      "raw": "{\n    \"Quantity\": 1294,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"Os05xh29TU\",\n    \"ShipperName\": \"Fedex\",\n    \"ISBN\": \"946229414-3\"\n}\n",
       "form": []
     },
     "tests": [
@@ -535,11 +535,11 @@
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
     "name": "/a/listings/delete/ DELETE VALID",
-    "url": "localhost:8001/a/listings/VNfiQte",
+    "url": "localhost:8001/a/listings/946229414-3",
     "method": "DELETE",
     "sortNum": 80000,
     "created": "2023-04-15T22:31:26.693Z",
-    "modified": "2023-04-18T20:06:50.087Z",
+    "modified": "2023-04-18T20:32:07.437Z",
     "headers": [],
     "params": [],
     "tests": [
@@ -795,17 +795,17 @@
     "_id": "85b74762-f839-4f08-95c5-51cba8635b14",
     "colId": "22a562ba-d4a9-4277-8f83-febb62957a1b",
     "containerId": "10b7753d-9cc7-4864-a137-5bc72725042a",
-    "name": "/a/listings/ PUT INVALID",
-    "url": "localhost:8001/a/listings/awfaw",
-    "method": "PUT",
+    "name": "/a/listings/ PUT VALID",
+    "url": "localhost:8001/a/listings/946229414-3",
+    "method": "POST",
     "sortNum": 60000,
     "created": "2023-04-16T00:12:04.755Z",
-    "modified": "2023-04-17T00:02:50.147Z",
+    "modified": "2023-04-18T20:29:30.773Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"ListingId\": \"\",\n    \"Quantity\": 1294,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"67890\",\n    \"ShipperName\": \"John Doe\",\n    \"ISBN\": \"978-3-16-148410-0\"\n}\n",
+      "raw": "{\n    \"Quantity\": 1294,\n    \"Price\": 10.99,\n    \"EmployeeId\": \"Os05xh29TU\",\n    \"ShipperName\": \"Fedex\",\n    \"ISBN\": \"946229414-3\"\n}\n",
       "form": []
     },
     "tests": [

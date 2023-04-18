@@ -118,8 +118,8 @@ def make_listing():
 
 # /listings/{listingId} - PUT
 # Updates attributes of listing 
-@administrators.route('/listings/<listingId>', methods=['PUT'])
-def edit_listing(listingId):
+@administrators.route('/listings/<ISBN>', methods=['PUT'])
+def edit_listing(ISBN):
     if request.content_type != 'application/json':
         return jsonify({"error": "Invalid Content-Type"}), 400
      
@@ -128,17 +128,11 @@ def edit_listing(listingId):
     price = req_data.get('Price')
     employee_id = req_data.get('EmployeeId')
     shipper_name = req_data.get('ShipperName')
-    isbn = req_data.get('ISBN')
     
-    # Check if the listing with the given listingId exists
     cursor = db.get_db().cursor()
-    cursor.execute("SELECT * FROM Listings WHERE ListingId = %s", (listingId,))
-    listing = cursor.fetchone()
-    if not listing:
-        return jsonify({"message": f"Listing {listingId} not found"}), 404
 
-    query = "UPDATE Listings SET Quantity = %s, Price = %s, EmployeeId = %s, ShipperName = %s, ISBN = %s WHERE ListingId = %s"
-    cursor.execute(query, (quantity, price, employee_id, shipper_name, isbn, listingId))
+    query = "UPDATE Listings SET Quantity = %s, Price = %s, EmployeeId = %s, ShipperName = %s WHERE ISBN = %s"
+    cursor.execute(query, (quantity, price, employee_id, shipper_name, ISBN))
     db.get_db().commit()
     cursor.close()
 
@@ -149,10 +143,10 @@ def edit_listing(listingId):
 
 # /listings/{listingId} - DELETE
 # Removes a given listing
-@administrators.route('/listings/<ListingId>', methods=['DELETE'])
-def delete_listing(ListingId):
+@administrators.route('/listings/<isbn>', methods=['DELETE'])
+def delete_listing(isbn):
     cursor = db.get_db().cursor()
-    query = f"DELETE FROM Listings WHERE ListingId = '{ListingId}'"
+    query = f"DELETE FROM Listings WHERE ISBN = '{isbn}'"
     current_app.logger.info(query)
     cursor.execute(query)
 
